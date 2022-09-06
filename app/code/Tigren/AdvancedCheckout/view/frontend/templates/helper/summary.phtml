@@ -1,0 +1,110 @@
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+
+/**
+ * @var \Magento\Review\Block\Product\ReviewRenderer $block
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+
+$url = $block->getReviewsUrl().'#reviews';
+$urlForm = $block->getReviewsUrl().'#review-form';
+?>
+<?php if ($block->isReviewEnabled() && $block->getReviewsCount()): ?>
+    <?php $rating = $block->getRatingSummary(); ?>
+    <div class="product-reviews-summary<?= !$rating ? ' no-rating' : '' ?>"
+         itemprop="aggregateRating" itemscope
+         itemtype="http://schema.org/AggregateRating">
+        <?php if ($rating): ?>
+            <div class="rating-summary">
+                <span
+                    class="label"><span><?= $block->escapeHtml(__('Rating')) ?>:</span></span>
+                <div class="rating-result"
+                     id="rating-result_<?= $block->escapeHtmlAttr($block->getProduct()
+                         ->getId()) ?>"
+                     title="<?= $block->escapeHtmlAttr($rating) ?>%"
+                >
+                 <span>
+                     <span>
+                         <span
+                             itemprop="ratingValue"><?= $block->escapeHtml($rating); ?>
+                         </span>% of <span itemprop="bestRating">100</span>
+                     </span>
+                 </span>
+                </div>
+            </div>
+            <?= /* @noEscape */
+            $secureRenderer->renderStyleAsTag(
+                'width:'.$block->escapeHtmlAttr($rating).'%',
+                '#rating-result_'.$block->getProduct()->getId().' span'
+            ) ?>
+        <?php endif; ?>
+        <div class="reviews-actions">
+            <a class="action view"
+               href="<?= $block->escapeUrl($url) ?>">
+                <span
+                    itemprop="reviewCount"><?= $block->escapeHtml($block->getReviewsCount()) ?></span>&nbsp;
+                <span><?= ($block->getReviewsCount() == 1)
+                        ? $block->escapeHtml(__('Review'))
+                        :
+                        $block->escapeHtml(__('Reviews')) ?>
+                </span>
+            </a>
+            <a class="action add" href="<?= $block->escapeUrl($urlForm) ?>">
+                <?= $block->escapeHtml(__('Add Your Review')) ?>
+            </a>
+        </div>
+    </div>
+<?php elseif ($block->isReviewEnabled() && $block->getDisplayIfEmpty()): ?>
+    <div class="product-reviews-summary empty">
+        <div class="reviews-actions">
+            <a class="action add" href="<?= $block->escapeUrl($urlForm) ?>">
+                <?= $block->escapeHtml(__('Be the first to review this product')) ?>
+            </a>
+        </div>
+    </div>
+<?php endif; ?>
+
+
+<div id="popup-modal">
+    <h3>Alert popup </h3>
+    <p>Alert popup</p>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function (
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Custom Form Popup',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+            debugger;
+            var popup = modal(options, $('#popup-modal'));
+            $('#product-addtocart-button').click(function () {
+                //callajax
+                //trong ajax thi truyen sku vao
+                //goi sang controller
+
+                $('#popup-modal').modal('openModal');
+            })
+        }
+    );
+</script>
