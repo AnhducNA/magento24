@@ -1,0 +1,55 @@
+<?php
+/**
+ * Question create template
+ *
+ * @var Create $block
+ * @var Escaper $escaper
+ * @var SecureHtmlRenderer $secureRenderer
+ */
+
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+use Tigren\Customer\Block\Create;
+
+?>
+
+<div class="block">
+    <div class="title">
+        <strong><?= $block->escapeHtml(__('Tigren Customer Create Form')) ?></strong>
+    </div>
+    <div class="content">
+        <form class="form question"
+              action="http://magento.localhost.com/tigren_customer/question/save"
+              method="post">
+            <div class="control">
+                <div class="form-group">
+                    <label
+                        for="question"> <?= $block->escapeHtml(__('Tittle')) ?></label>
+                    <input type="text" name="title" class="form-control"
+                           id="question"
+                           placeholder=" <?= $block->escapeHtml(__('Tittle Content')) ?>">
+                </div>
+                <div class="form-group">
+                    <label
+                        for="content"> <?= $block->escapeHtml(__('Content')) ?></label>
+                    <input type="text" name="content" class="form-control"
+                           id="content"
+                           placeholder=" <?= $block->escapeHtml(__('Question Content')) ?>">
+                </div>
+          
+            </div>
+            <br>
+            <div class="actions">
+                <button type="submit" class="btn btn-primary"
+                        title="<?= $block->escapeHtml(__('Create')) ?>"
+                        aria-label="Subscribe">
+                    <span><?= $block->escapeHtml(__('Create')) ?></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+

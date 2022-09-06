@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuratio n.xsd">
+    <head>
+        <link src="Tigren_Customer::css/style.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Tigren\Customer\Block\Create" name="tigren_customer_question_create"
+                   template="Tigren_Customer::create.phtml"/>
+        </referenceContainer>
+    </body>
+
+</page>

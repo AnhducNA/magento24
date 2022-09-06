@@ -1,0 +1,33 @@
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+
+$specialprice = $_product->getSpecialPrice();
+$specialPriceFromDate = $_product->getSpecialFromDate();
+$specialPriceToDate = $_product->getSpecialToDate();
+$today = time();
+$price = $_product->getPrice();
+if ($price) {
+    $sale = round((($price - $specialprice) / $price) * 100);
+}
+if ($specialprice) {
+    if ($today >= strtotime($specialPriceFromDate)
+        && $today <= strtotime($specialPriceToDate)
+        || $today >= strtotime($specialPriceFromDate)
+        && is_null($specialPriceToDate)
+    ) { ?>
+        <div class="label-product label-sale">
+                <span class="sale-product-icon">
+                    <?php if ($sale) {
+                        echo $sale.'%';
+                    } else {
+                        echo __('Sale');
+                    } ?>
+                </span>
+        </div>
+    <?php }
+}
+?>
