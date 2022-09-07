@@ -7,11 +7,12 @@
 
 namespace Tigren\AdvancedCheckout\Controller\Index;
 
-use Magento\Catalog\Model\ProductRepository;
-use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Sales\Api\OrderRepositoryInterface;
+use Magento\Sales\Model\ResourceModel\Order\Address\CollectionFactory;
 
 /**
  * Class Display
@@ -23,89 +24,41 @@ class Display extends Action
     /**
      * @var CollectionFactory
      */
-    protected $productCollectionFactory;
+    protected $addressFactory;
+    /**
+     * @var OrderRepositoryInterface
+     */
+    protected $orderRepository;
 
     /**
-     * @param  Context  $context
-     * @param  ProductRepository  $productRepository
-     * @param  CollectionFactory  $productCollectionFactory
+     * @param Context $context
+     * @param OrderRepositoryInterface $orderRepository
+     * @param CollectionFactory $addressFactory
      */
     public function __construct(
-        Context $context,
-        ProductRepository $productRepository,
-        CollectionFactory $productCollectionFactory
+        Context                  $context,
+        OrderRepositoryInterface $orderRepository,
+        CollectionFactory        $addressFactory
     ) {
-        $this->productCollectionFactory = $productCollectionFactory;
+        $this->orderRepository = $orderRepository;
+        $this->addressFactory = $addressFactory;
         parent::__construct($context);
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
+     * @return ResponseInterface|ResultInterface|void
      */
     public function execute()
     {
-        $listProductInCart = $this->getListProductInCart();
-
-        $collection = $this->productCollectionFactory->create();
-        foreach ($collection as $product) {
-//            echo '<pre>', print_r($product->getdata()); //For full product details.
-//            echo $product->getSku()."<br>"; //print product sku.
-            foreach ($listProductInCart as $item) {
-                if ($item->getSku() == $product->getSku()) {
-                    echo "<pre>";
-                    print_r($product->getData());
-//                    echo $item->getSku();
-                }
-            }
-        }
-
-    }
-
-    /**
-     * @return array
-     */
-    public function getListProductInCart()
-    {
-        $objectManager = ObjectManager::getInstance();
-        $cart = $objectManager->get('\Magento\Checkout\Model\Cart');
-
-        // retrieve quote items collection
-        $itemsCollection = $cart->getQuote()->getItemsCollection();
-
-        // get array of all items what can be display directly
-        $itemsVisible = $cart->getQuote()->getAllVisibleItems();
-
-        // retrieve quote items array
-        $items = $cart->getQuote()->getAllItems();
-
-        return $items;
-    }
-
-    /**
-     * @param $sku
-     *
-     * @return array|mixed
-     */
-    public function getProductInCartBySku($sku)
-    {
-        $objectManager = ObjectManager::getInstance();
-        $cart = $objectManager->get('\Magento\Checkout\Model\Cart');
-
-        // retrieve quote items collection
-        $itemsCollection = $cart->getQuote()->getItemsCollection();
-
-        // get array of all items what can be display directly
-        $itemsVisible = $cart->getQuote()->getAllVisibleItems();
-
-        // retrieve quote items array
-        $listProductInCart = $cart->getQuote()->getAllItems();
-        $productBySku = [];
-        foreach ($listProductInCart as $item) {
-            if ($item->getSku() == $sku) {
-                $productBySku = $item;
-            }
-        }
-
-        return $productBySku;
+        $collection = $this->addressFactory->create()->addFieldToFilter(
+            'address_type',
+            ['like' => '%' . 'shipping' . '%']
+        );
+        echo "<pre>";
+        print_r($collection->getData());
+//        $order = $this->orderRepository->get(0);
+//        echo $order->getId();
+//        print_r($order);
+        // TODO: Implement execute() method.
     }
 }

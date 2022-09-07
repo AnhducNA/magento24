@@ -7,42 +7,70 @@
 
 namespace Tigren\AdvancedCheckout\Observer;
 
+use Magento\Customer\Model\CustomerFactory;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Sales\Model\Order;
 use Zend_Log;
+use Zend_Log_Exception;
 use Zend_Log_Writer_Stream;
 
 /**
- * Class CustomPrice
- *
- * @package Tigren\CustomerGroupCatalog\Observer
+ * Class ProcessOrder
+ * @package Tigren\AdvancedCheckout\Observer
  */
 class ProcessOrder implements ObserverInterface
 {
+    /**
+     * @var Order
+     */
     protected $_order;
 
+    protected $customerFactory;
+
+    /**
+     * @param Order $order
+     */
     public function __construct(
-        Order $order
+        Order           $order,
+        CustomerFactory $customerFactory
     ) {
         $this->_order = $order;
+        $this->customerFactory = $customerFactory;
     }
 
+    /**
+     * @param Observer $observer
+     * @return $this
+     * @throws Zend_Log_Exception
+     */
     public function execute(Observer $observer)
     {
         $writer = new Zend_Log_Writer_Stream(BP . '/var/log/custom.log');
         $logger = new Zend_Log();
         $logger->addWriter($writer);
-        $logger->info(print_r('hihi', true));
+//        $logger->info(print_r('hihi', true));
 
-        $order = $observer->getOrder();
-        $quote = $observer->getQuote();
+        $order = $observer->getEvent()->getData('order');
+        $quote = $observer->getEvent()->getQuote();
+        $shippingAddress = $order->getShippingAddress();
+        $email = $shippingAddress->getEmail();
+        $firstName = $shippingAddress->getFirstName();
+        $lastName = $shippingAddress->getLastName();
 
+        $customer = $this->customerFactory->create();
+
+        // Preparing data for new customer
+        $customer->setEmail($email);
+        $customer->setFirstname($firstName);
+        $customer->setLastname($lastName);
+        $customer->setPassword("password");
+
+        // Save data
+        $customer->save();
+
+        $logger->info(print_r($email, true));
         $logger->info(print_r($order->getId(), true));
-
-        $billingAddress = $this->_order->getBillingAddress();
-        $shippingAddress = $this->_order->getShippingAddress();
-//        $logger->info(print_r($billingAddress, true));
 
         return $this;
     }
