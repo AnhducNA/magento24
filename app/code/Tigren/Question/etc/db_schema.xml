@@ -1,0 +1,19 @@
+<!--
+  ~ @author    Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license   Open Software License ("OSL") v. 3.0
+  -->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="tigren_customer_question" resource="default" engine="innodb" comment="Tigren Customer Question Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" comment="Entity Id"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title"/>
+        <column xsi:type="varchar" name="content" nullable="false" comment="Content"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="true" comment="Create At"/>
+        <column xsi:type="int" name="author_id" nullable="true" comment="Author ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>
