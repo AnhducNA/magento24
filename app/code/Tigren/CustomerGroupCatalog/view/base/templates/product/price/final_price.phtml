@@ -1,4 +1,69 @@
-<span class="special-price">30</span>
-<span><b style="color:#008000">15% off </b>
-    </span>
-<span class="old-price">59</span>
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+?>
+
+<?php
+
+use Magento\Catalog\Pricing\Render\FinalPriceBox;
+use Magento\Framework\Pricing\Price\PriceInterface;
+use Tigren\CustomerGroupCatalog\Helper\FinalPrice;
+
+/** @var FinalPrice $helper */
+
+/** @var FinalPriceBox $block */
+
+/** @var PriceInterface $priceModel */
+
+$priceModel = $block->getPriceType('regular_price');
+
+/** @var PriceInterface $finalPriceModel */
+$finalPriceModel = $block->getPriceType('final_price');
+
+$idSuffix = $block->getIdSuffix() ? $block->getIdSuffix() : '';
+$schema = ($block->getZone() == 'item_view') ? true : false;
+?>
+
+<span class="special-price" style="font-weight: bold">
+        <?php $oldPrice = $block->renderAmount($priceModel->getAmount(), [
+            'display_label' => __('Old Price'),
+            'price_id' => $block->getPriceId('old-price-' . $idSuffix),
+            'price_type' => 'oldPrice',
+            'include_container' => true,
+            'skip_adjustments' => true,
+            'schema' => $schema
+        ]);
+        $oldPrice = '$59.00';
+        $oldPrice = substr($oldPrice, 1);
+
+        $helper = $this->helper('\Tigren\CustomerGroupCatalog\Helper\FinalPrice');
+        $discount = $helper->discountByProducts('24-WB04');
+        $newPrice = (int)$oldPrice * (100 - $discount) / 100;
+
+//        $newPrice = (int)$oldPrice;
+        echo '$' . $newPrice;
+        ?>
+</span>
+
+<span>
+    <?php
+    $item = $block->getSaleableItem();
+
+    echo '<b style="color:#008000"> Discount ' . $discount . '% </b>';
+    ?>
+</span>
+
+<span class="old-price">
+    <br>
+        <?php echo $block->renderAmount($priceModel->getAmount(), [
+            'display_label' => __('Old Price'),
+            'price_id' => $block->getPriceId('old-price-' . $idSuffix),
+            'price_type' => 'oldPrice',
+            'include_container' => true,
+            'skip_adjustments' => true,
+            'schema' => $schema
+        ]); ?>
+</span>

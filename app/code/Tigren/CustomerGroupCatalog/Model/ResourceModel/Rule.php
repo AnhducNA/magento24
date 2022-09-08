@@ -10,8 +10,10 @@ namespace Tigren\CustomerGroupCatalog\Model\ResourceModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 
+
 /**
- *
+ * Class Rule
+ * @package Tigren\CustomerGroupCatalog\Model\ResourceModel
  */
 class Rule extends AbstractDb
 {

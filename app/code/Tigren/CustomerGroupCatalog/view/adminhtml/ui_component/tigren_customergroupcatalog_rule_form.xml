@@ -61,6 +61,7 @@
             <validateUrl path="tigren_customergroupcatalog/rule/index/"/>
         </settings>
     </dataSource>
+
     <fieldset name="general">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">

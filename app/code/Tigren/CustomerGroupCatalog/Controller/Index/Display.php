@@ -8,6 +8,8 @@
 namespace Tigren\CustomerGroupCatalog\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
 
 /**
  * Class Display
@@ -16,11 +18,16 @@ use Magento\Framework\App\Action\Action;
  */
 class Display extends Action
 {
+
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
+     * @return ResponseInterface|ResultInterface|void
      */
     public function execute()
     {
-        echo 'Duc';
+        $str = '$59.00';
+        $number = 10;
+        $str = ltrim($str, $str[0]);
+        $str = substr($str, 1);
+        echo $str;
     }
 }
