@@ -6,11 +6,6 @@
   -->
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
-    <router id="standard">
-        <route id="tigren_question" frontName="tigren_question">
-            <module name="Tigren_Question"/>
-        </route>
-
-    </router>
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Tigren_Customer"/>
 </config>

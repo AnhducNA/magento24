@@ -17,7 +17,7 @@ use Magento\Framework\View\Result\PageFactory;
  * Class Create
  * @package Tigren\Question\Controller\Question
  */
-class Create extends Action
+class Edit extends Action
 {
     /**
      * @var PageFactory

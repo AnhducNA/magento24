@@ -5,29 +5,16 @@
  * @license   Open Software License ("OSL") v. 3.0
  */
 
-namespace Tigren\Question\Controller\Question;
+namespace Tigren\Question\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
-/**
- * Class Create
- * @package Tigren\Question\Controller\Question
- */
-class Create extends Action
+class Index extends Action
 {
-    /**
-     * @var PageFactory
-     */
     protected $_pageFactory;
 
-    /**
-     * @param Context $context
-     * @param PageFactory $pageFactory
-     */
     public function __construct(
         Context     $context,
         PageFactory $pageFactory
@@ -36,9 +23,6 @@ class Create extends Action
         return parent::__construct($context);
     }
 
-    /**
-     * @return ResultInterface|Page
-     */
     public function execute()
     {
         return $this->_pageFactory->create();

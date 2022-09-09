@@ -7,25 +7,31 @@
 
 /**
  * Question create template
- * @var Create $block
+ * @var Save $block
  * @var Escaper $escaper
  * @var SecureHtmlRenderer $secureRenderer
  */
 
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
-use Tigren\Question\Block\Create;
+use Tigren\Question\Block\Save;
 
 ?>
 
 <div class="block">
     <div class="title">
-        <strong><?= $block->escapeHtml(__('Tigren Question Create Form')) ?></strong>
+        <strong><?= $block->escapeHtml(__('Tigren Question Form')) ?></strong>
     </div>
     <div class="content">
         <form class="form question"
-              action="http://magento.localhost.com/tigren_customer/question/save"
-              method="post">
+              action="<?php
+              if ($block->returnIdQuestion()) {
+                  echo $block->getBaseUrl() . 'tigren_customer/question/save/?id='.$block->returnIdQuestion();
+              } else {
+                  echo $block->getBaseUrl() . 'tigren_customer/question/save';
+              }
+              ?>"
+              method="POST">
             <div class="control">
                 <div class="form-group">
                     <label
@@ -46,9 +52,9 @@ use Tigren\Question\Block\Create;
             <br>
             <div class="actions">
                 <button type="submit" class="btn btn-primary"
-                        title="<?= $block->escapeHtml(__('Create')) ?>"
+                        title="<?= $block->escapeHtml(__('Save')) ?>"
                         aria-label="Subscribe">
-                    <span><?= $block->escapeHtml(__('Create')) ?></span>
+                    <span><?= $block->escapeHtml(__('Save')) ?></span>
                 </button>
             </div>
         </form>

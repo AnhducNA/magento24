@@ -5,10 +5,11 @@
  * @license   Open Software License ("OSL") v. 3.0
  */
 
-namespace Tigren\Question\Block;
-use Magento\Framework\View\Element\Template;
+use Magento\Framework\Component\ComponentRegistrar;
 
-class Create extends Template
-{
+ComponentRegistrar::register(
+    ComponentRegistrar::MODULE,
+    'Tigren_Customer',
+    __DIR__
+);
 
-}

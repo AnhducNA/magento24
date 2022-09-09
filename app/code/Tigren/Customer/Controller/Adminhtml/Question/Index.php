@@ -5,28 +5,46 @@
  * @license   Open Software License ("OSL") v. 3.0
  */
 
-namespace Tigren\Question\Controller\Adminhtml\Question;
+namespace Tigren\Customer\Controller\Adminhtml\Question;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
-class QuestionListing extends Action
+/**
+ * Class Index
+ * @package Tigren\Customer\Controller\Adminhtml\Question
+ */
+class Index extends Action
 {
+    /**
+     * @var PageFactory
+     */
     protected $_pageFactory;
 
+    /**
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     */
     public function __construct(Context $context, PageFactory $pageFactory)
     {
         $this->_pageFactory = $pageFactory;
         parent::__construct($context);
     }
 
+    /**
+     * @return ResponseInterface|ResultInterface|Page
+     */
     public function execute()
     {
+//        die('aa');
         $resultPage = $this->_pageFactory->create();
         $resultPage->getConfig()->getTitle()
-            ->prepend(__('Tigren Customer Question'));
+            ->prepend(__('Tigren Customer Question: List'));
 
         return $resultPage;
     }

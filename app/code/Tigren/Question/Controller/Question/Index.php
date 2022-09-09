@@ -7,40 +7,53 @@
 
 namespace Tigren\Question\Controller\Question;
 
+use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
-/**
- * Class Create
- * @package Tigren\Question\Controller\Question
- */
-class Create extends Action
+class Index extends Action
 {
     /**
      * @var PageFactory
      */
     protected $_pageFactory;
+    /**
+     * @var Session
+     */
+    protected $_sesstion;
 
     /**
-     * @param Context $context
-     * @param PageFactory $pageFactory
+     * @param  Context  $context
+     * @param  PageFactory  $pageFactory
+     * @param  Session  $session
      */
     public function __construct(
-        Context     $context,
-        PageFactory $pageFactory
+        Context $context,
+        PageFactory $pageFactory,
+        Session $session,
     ) {
+        $this->_sesstion = $session;
         $this->_pageFactory = $pageFactory;
+
         return parent::__construct($context);
     }
 
     /**
-     * @return ResultInterface|Page
+     * @return ResponseInterface|ResultInterface|Page
      */
     public function execute()
     {
-        return $this->_pageFactory->create();
+//        die('aaa');
+        if ($this->_sesstion->isLoggedIn()) {
+            return $this->_pageFactory->create();
+        } else {
+            $this->messageManager->addErrorMessage("You have to login to access this page");
+
+            return $this->_redirect('customer/account/login/');
+        }
     }
 }

@@ -1,0 +1,61 @@
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+
+/**
+ * @var Index $block
+ */
+
+use Tigren\Question\Block\Index;
+
+?>
+<h1>Form show Customer's question</h1>
+<?php
+//echo $block->getListQuestionByID();
+$collection = $block->getCollection();
+//print_r($collection->getData());
+
+?>
+<table>
+    <tr>
+        <th>Question ID</th>
+        <th>Author ID</th>
+        <th>Title Question</th>
+        <th>Content Question</th>
+        <th>Created At</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <?php
+
+    foreach ($collection as $key => $question) {
+        ?>
+        <tr>
+            <td><?php echo $question['entity_id'] ?></td>
+            <td><?php echo $question['author_id'] ?></td>
+            <td><?php echo $question['title'] ?></td>
+            <td><?php echo $question['content'] ?></td>
+            <td><?php echo $question['created_at'] ?></td>
+            <td><a href="<?php echo $block->getUrl()
+                    . 'tigren_customer/question/edit/?id='
+                    . $question['entity_id']; ?>">Edit</a></td>
+            <td><a href="<?php echo $block->getUrl()
+                    . 'tigren_customer/question/deleteItem/?id='
+                    . $question['entity_id']; ?>">Delete</a></td>
+        </tr>
+        <?php
+    }
+    ?>
+</table>
+<br>
+<div class="actions text-right">
+    <a href="<?php echo $block->getUrl()
+        . 'tigren_customer/question/create' ?>"
+       title="<?= $block->escapeHtml(__('Create new question')) ?>">
+        <span><?= $block->escapeHtml(__('Create new question')) ?></span>
+    </a>
+
+    </button>
+</div>
