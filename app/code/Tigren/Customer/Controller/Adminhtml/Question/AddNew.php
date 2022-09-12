@@ -18,7 +18,7 @@ use Magento\Framework\View\Result\PageFactory;
  * Class Index
  * @package Tigren\Customer\Controller\Adminhtml\Question
  */
-class Index extends Action
+class AddNew extends Action
 {
     /**
      * @var PageFactory
@@ -43,7 +43,7 @@ class Index extends Action
 //        die('aa');
         $resultPage = $this->_pageFactory->create();
         $resultPage->getConfig()->getTitle()
-            ->prepend(__('Tigren Customer Question: List'));
+            ->prepend(__('Tigren Customer Question: Create'));
 
         return $resultPage;
     }

@@ -5,11 +5,15 @@
   ~ @license   Open Software License ("OSL") v. 3.0
   -->
 
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="Tigren_Customer::css/style.css"/>
+    </head>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="tigren_customer_question_index"/>
+            <block class="Tigren\Customer\Block\Save" name="tigren_customer_question_edit" template="Tigren_Customer::form.phtml"/>
         </referenceContainer>
     </body>
+
 </page>

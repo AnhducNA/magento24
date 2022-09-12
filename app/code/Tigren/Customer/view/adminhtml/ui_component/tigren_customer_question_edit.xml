@@ -37,21 +37,22 @@
     </argument>
 
     <dataSource name="tigren_customer_question_form_data_source">
-        <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Tigren\Customer\Model\Question\DataProvider</argument>
-            <argument name="name" xsi:type="string">tigren_customer_question_form_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
-            <argument name="requestFieldName" xsi:type="string">id</argument>
-        </argument>
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
         <settings>
-            <validateUrl path="tigren_customer/question/index/"/>
+            <validateUrl path="tigren_customer/question/validate"/>
             <submitUrl path="tigren_customer/question/save"/>
         </settings>
+        <dataProvider class="Tigren\Customer\Model\Question\DataProvider" name="tigren_customer_question_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+
     </dataSource>
 
     <fieldset name="general">
