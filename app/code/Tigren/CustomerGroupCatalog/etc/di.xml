@@ -23,7 +23,7 @@
     <virtualType name="Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
-            <argument name="mainTable" xsi:type="string">tigren_customer_group_catalog_rule</argument>
+            <argument name="mainTable" xsi:type="string">tigren_customer_groupcatalog_rule</argument>
             <argument name="resourceModel" xsi:type="string">Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule
             </argument>
         </arguments>
