@@ -11,26 +11,30 @@ use Exception;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Ui\Component\MassAction\Filter;
 use Tigren\Customer\Model\ResourceModel\Question\CollectionFactory;
 
+/**
+ * Class MassDelete
+ * @package Tigren\Customer\Controller\Adminhtml\Question
+ */
 class MassDelete extends Action
 {
     /**
      * @var Filter
      */
-    private $filter;
+    protected $filter;
 
     /**
      * @var CollectionFactory
      */
-    private $collectionFactory;
+    protected $collectionFactory;
 
     /**
      * @param Context $context
-     * @param JsonFactory $resultJsonFactory
+     * @param Filter $filter
+     * @param CollectionFactory $collectionFactory
      */
     public function __construct(
         Context           $context,
@@ -70,15 +74,14 @@ class MassDelete extends Action
         } catch (Exception $e) {
             $this->messageManager->addError($e->getMessage());
         }
-
         return $resultRedirect->setUrl($this->_redirect->getRefererUrl());
     }
 
     /**
      * @return bool
      */
-//    protected function _isAllowed()
-//    {
-//        return $this->_authorization->isAllowed('Tigren_Customer::mass_delete');
-//    }
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Tigren_Customer::mass_delete');
+    }
 }

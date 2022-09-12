@@ -41,12 +41,14 @@
             </argument>
         </argument>
     </dataSource>
+    <!-- For Creating a container -->
     <listingToolbar name="listing_top">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="sticky" xsi:type="boolean">true</item>
             </item>
         </argument>
+        <!-- For Displaying Bookmarks -->
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
         <filters name="listing_filters">
@@ -60,6 +62,7 @@
             </filterSelect>
         </filters>
         <paging name="listing_paging"/>
+        <!-- For Displaying Mass Action -->
         <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
             <action name="delete">
                 <settings>
