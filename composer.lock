@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19d57d808ce1a5956901ec12ac421177",
+    "content-hash": "2fc7a74d813f1bfef22e1489d8e7b21e",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -19223,6 +19223,110 @@
             "time": "2022-03-17T08:00:35+00:00"
         },
         {
+            "name": "swissup/module-core",
+            "version": "1.12.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swissup/module-core.git",
+                "reference": "238bb0fac5cf76f460c80f38cbb75853b58b5e98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swissup/module-core/zipball/238bb0fac5cf76f460c80f38cbb75853b58b5e98",
+                "reference": "238bb0fac5cf76f460c80f38cbb75853b58b5e98",
+                "shasum": ""
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Swissup\\Core\\": ""
+                }
+            },
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "Swissup core module. It's purpose is to add Swissup menu and config entries",
+            "support": {
+                "source": "https://github.com/swissup/module-core/tree/1.12.11",
+                "issues": "https://github.com/swissup/module-core/issues"
+            },
+            "time": "2022-08-05T11:16:39+00:00"
+        },
+        {
+            "name": "swissup/module-search-mysql-legacy",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swissup/module-search-mysql-legacy.git",
+                "reference": "d822e61b6404cd4b43e2e5ccd4a9ede4ab9ec30d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swissup/module-search-mysql-legacy/zipball/d822e61b6404cd4b43e2e5ccd4a9ede4ab9ec30d",
+                "reference": "d822e61b6404cd4b43e2e5ccd4a9ede4ab9ec30d",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": ">=102.0",
+                "magento/module-backend": ">=101.0",
+                "magento/module-catalog": ">=103.0",
+                "magento/module-catalog-inventory": ">=100.3",
+                "magento/module-catalog-search": ">=101.0",
+                "magento/module-checkout": ">=100.3",
+                "magento/module-cms": ">=103.0",
+                "magento/module-customer": ">=102.0",
+                "magento/module-eav": ">=102.0",
+                "magento/module-search": ">=101.0",
+                "magento/module-store": ">=101.0",
+                "swissup/module-core": "^1.12.11"
+            },
+            "type": "magento2-module",
+            "extra": {
+                "swissup": {
+                    "links": {
+                        "marketplace.off": "https://marketplace.magento.com/swissup-search-mysql-legacy.html",
+                        "store": "https://swissuplabs.com/",
+                        "docs": "https://docs.swissuplabs.com/m2/extensions/search-mysql-legacy/",
+                        "changelog": "https://docs.swissuplabs.com/m2/extensions/search-mysql-legacy/changelog/"
+                    }
+                },
+                "marketplace": {
+                    "gallery": [
+                        "https://docs.swissuplabs.com/images/marketplace/module-search-mysql-legacy.png"
+                    ],
+                    "links": {
+                        "docs": "https://docs.swissuplabs.com/m2/extensions/search-mysql-legacy/",
+                        "changelog": "https://docs.swissuplabs.com/m2/extensions/search-mysql-legacy/changelog/"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Swissup\\SearchMysqlLegacy\\": ""
+                }
+            },
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "Legacy mysql search for magento 2.4",
+            "keywords": [
+                "legacy",
+                "mysql",
+                "search"
+            ],
+            "support": {
+                "source": "https://github.com/swissup/module-search-mysql-legacy/tree/1.1.3",
+                "issues": "https://github.com/swissup/module-search-mysql-legacy/issues"
+            },
+            "time": "2022-08-12T07:35:28+00:00"
+        },
+        {
             "name": "symfony/config",
             "version": "v5.4.11",
             "source": {
@@ -26172,5 +26276,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

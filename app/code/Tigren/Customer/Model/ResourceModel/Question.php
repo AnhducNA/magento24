@@ -5,16 +5,17 @@
  * @license   Open Software License ("OSL") v. 3.0
  */
 
-namespace Tigren\Customer\Model\ResourceModel;
+namespace Tigren\CustomerGroupCatalog\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 
+
 /**
- * Class Question
- * @package Tigren\Question\Model\ResourceModel
+ * Class Rule
+ * @package Tigren\CustomerGroupCatalog\Model\ResourceModel
  */
-class Question extends AbstractDb
+class Rule extends AbstractDb
 {
     /**
      * @param  Context  $context
@@ -29,6 +30,6 @@ class Question extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('tigren_customer_question', 'entity_id');
+        $this->_init('tigren_customer_group_catalog_rule', 'rule_id');
     }
 }
