@@ -14,11 +14,11 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Stdlib\DateTime\DateTime;
 use Magento\Framework\View\Result\PageFactory;
-use Tigren\Question\Model\QuestionFactory;
+use Tigren\Customer\Model\QuestionFactory;
 
 /**
  * Class Save
- * @package Tigren\Question\Controller\Question
+ * @package Tigren\Customer\Controller\Question
  */
 class Save extends Action
 {
@@ -76,21 +76,19 @@ class Save extends Action
         $newData['author_id'] = $idCustomerLogin;
         $newData['created_at'] = $date;
 
-        if ($data['id']) {
+        if (!empty($data['id'])) {
 //            Update
             $model = $this->_questionFactory->create()->load($data['id']);
             $model->setTitle($newData['title']);
             $model->setContent($newData['content']);
             $model->setAuthorId($newData['author_id']);
             $model->save();
-
         } else {
 //            Create
             $model = $this->_questionFactory->create();
             $model->setData($newData);
             $model->save();
         }
-
         $this->messageManager->addSuccess('Save question successfully.');
 
         return $this->resultRedirectFactory->create()
