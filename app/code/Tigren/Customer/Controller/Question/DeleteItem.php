@@ -11,7 +11,7 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use PHPUnit\Exception;
-use Tigren\Question\Model\QuestionFactory;
+use Tigren\Customer\Model\QuestionFactory;
 
 class DeleteItem extends Action
 {
