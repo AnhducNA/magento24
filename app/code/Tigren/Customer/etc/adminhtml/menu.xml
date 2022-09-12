@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+  ~ @author    Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license   Open Software License ("OSL") v. 3.0
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tigren_Customer::question_menu" title="Quesion List" module="Tigren_Customer"
+             sortOrder="20" resource="Tigren_Customer::view"/>
+        <add id="Tigren_Customer::question1_menu" title="Quesion List View" module="Tigren_Customer" sortOrder="1"
+             parent="Tigren_Customer::question_menu" action="tigren_customer/question/index"
+             resource="Tigren_Customer::menu"/>
+        <add id="Tigren_Customer::question2_menu" title="Quesion List Create" module="Tigren_Customer" sortOrder="1"
+             parent="Tigren_Customer::question_menu" action="tigren_customer/question/addnew"
+             resource="Tigren_Customer::menu2"/>
+
+    </menu>
+</config>
