@@ -51,16 +51,8 @@
         <!-- For Displaying Bookmarks -->
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
-        <filters name="listing_filters">
-            <filterSelect name="store_ids" provider="${ $.parentName }">
-                <settings>
-                    <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options"/>
-                    <caption translate="true">All Store Views</caption>
-                    <label translate="true">Store View</label>
-                    <dataScope>store_ids</dataScope>
-                </settings>
-            </filterSelect>
-        </filters>
+        <filters name="listing_filters"/>
+
         <paging name="listing_paging"/>
         <!-- For Displaying Mass Action -->
         <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
