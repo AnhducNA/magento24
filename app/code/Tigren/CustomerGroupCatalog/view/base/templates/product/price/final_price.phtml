@@ -1,0 +1,54 @@
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+?>
+
+<?php
+
+use Magento\Catalog\Pricing\Render\FinalPriceBox;
+use Magento\Framework\Pricing\Price\PriceInterface;
+use Tigren\CustomerGroupCatalog\Helper\FinalPrice;
+
+/** @var FinalPrice $helper */
+
+/** @var FinalPriceBox $block */
+
+$priceModel = $block->getPriceType('regular_price');
+
+/** @var PriceInterface $finalPriceModel */
+$finalPriceModel = $block->getPriceType('final_price');
+
+$idSuffix = $block->getIdSuffix() ? $block->getIdSuffix() : '';
+$schema = ($block->getZone() == 'item_view') ? true : false;
+
+?>
+<span class="special-price" style="font-weight: bold">
+        <?php
+        $helper = $this->helper('\Tigren\CustomerGroupCatalog\Helper\FinalPrice');
+        $oldPrice = $helper->priceByProductID($block->getSaleableItem()->getId());
+        $discount = $helper->discountByProductID($block->getSaleableItem()->getId());
+
+        $newPrice = (int)$oldPrice * (100 - $discount) / 100;
+
+        //        $newPrice = (int)$oldPrice;
+        echo '$' . $newPrice;
+        ?>
+</span>
+
+<span>
+    <?php
+    $item = $block->getSaleableItem();
+
+    echo '<b style="color:#008000"> Discount ' . $discount . '% </b>';
+    ?>
+</span>
+
+<span class="old-price">
+    <br> <strong>
+        <?php
+        echo 'Old price: ' . '$' . $helper->priceByProductID($block->getSaleableItem()->getId()) ;
+        ?></strong>
+</span>
