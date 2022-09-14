@@ -25,30 +25,36 @@ $idSuffix = $block->getIdSuffix() ? $block->getIdSuffix() : '';
 $schema = ($block->getZone() == 'item_view') ? true : false;
 
 ?>
-<span class="special-price" style="font-weight: bold">
-        <?php
-        $helper = $this->helper('\Tigren\CustomerGroupCatalog\Helper\FinalPrice');
-        $oldPrice = $helper->priceByProductID($block->getSaleableItem()->getId());
-        $discount = $helper->discountByProductID($block->getSaleableItem()->getId());
+<span class="special-price">New price:
+    <strong>
+           <?php
+           $helper = $this->helper('\Tigren\CustomerGroupCatalog\Helper\FinalPrice');
+           $oldPrice = $helper->priceByProductID($block->getSaleableItem()->getId());
+           $discount = $helper->discountByProductID($block->getSaleableItem()->getId());
 
-        $newPrice = (int)$oldPrice * (100 - $discount) / 100;
+           $newPrice = (int)$oldPrice * (100 - $discount) / 100;
 
-        //        $newPrice = (int)$oldPrice;
-        echo '$' . $newPrice;
-        ?>
+           //        $newPrice = (int)$oldPrice;
+           echo '$' . $newPrice;
+           ?>
+    </strong>
+    <br>
 </span>
 
-<span>
-    <?php
-    $item = $block->getSaleableItem();
-
-    echo '<b style="color:#008000"> Discount ' . $discount . '% </b>';
-    ?>
+<span> Discount:
+    <strong style="color:#008000">
+            <?php
+            $item = $block->getSaleableItem();
+            echo $discount . '%';
+            ?>
+    </strong>
+    <br>
 </span>
 
 <span class="old-price">
-    <br> <strong>
+   <strong>
         <?php
-        echo 'Old price: ' . '$' . $helper->priceByProductID($block->getSaleableItem()->getId()) ;
-        ?></strong>
+        echo 'Old price: ' . '$' . $helper->priceByProductID($block->getSaleableItem()->getId());
+        ?>
+   </strong>
 </span>

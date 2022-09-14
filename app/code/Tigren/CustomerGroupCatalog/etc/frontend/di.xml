@@ -7,11 +7,11 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
     <type name="Magento\Catalog\Model\Product">
-        <plugin name="hidecartbutton"
-                type="Tigren\CustomerGroupCatalog\Plugin\Magento\Catalog\Model\Product\Hidecartbutton" sortOrder="32"/>
+<!--        <plugin name="hidecartbutton"-->
+<!--                type="Tigren\CustomerGroupCatalog\Plugin\Magento\Catalog\Model\Product\Hidecartbutton" sortOrder="32"/>-->
     </type>
     <type name="Magento\Catalog\Pricing\Render\FinalPriceBox">
-        <plugin name="cataloghideprice_finalpricebox"
-                type="Tigren\CustomerGroupCatalog\Plugin\Magento\Catalog\Pricing\Render\FinalPriceBox"/>
+<!--        <plugin name="cataloghideprice_finalpricebox"-->
+<!--                type="Tigren\CustomerGroupCatalog\Plugin\Magento\Catalog\Pricing\Render\FinalPriceBox"/>-->
     </type>
 </config>
