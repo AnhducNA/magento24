@@ -42,16 +42,16 @@ class ShowPopup extends Action
     protected $resultJsonFactory;
 
     /**
-     * @param  Context  $context
-     * @param  ProductRepository  $productRepository
-     * @param  Cart  $cart
-     * @param  JsonFactory  $resultJsonFactory
+     * @param Context $context
+     * @param ProductRepository $productRepository
+     * @param Cart $cart
+     * @param JsonFactory $resultJsonFactory
      */
     public function __construct(
-        Context $context,
+        Context           $context,
         ProductRepository $productRepository,
-        Cart $cart,
-        JsonFactory $resultJsonFactory
+        Cart              $cart,
+        JsonFactory       $resultJsonFactory
     ) {
         $this->productRepository = $productRepository;
         $this->cart = $cart;
@@ -60,7 +60,7 @@ class ShowPopup extends Action
     }
 
     /**
-     * @return ResponseInterface|Json|ResultInterface
+     * @return Json
      */
     public function execute()
     {
@@ -78,11 +78,9 @@ class ShowPopup extends Action
                 'isShowPopup' => true,
             ];
         }
-        /** @var Json $resultJson */
         $resultJson = $this->resultJsonFactory->create();
 
         return $resultJson->setData($response);
-
     }
 
     /**

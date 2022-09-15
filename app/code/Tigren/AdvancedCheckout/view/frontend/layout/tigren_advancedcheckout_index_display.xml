@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuratio n.xsd">
+    <head>
+<!--        <link src="Tigren_AdvancedCheckout::js/myfile.js"/>-->
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="helloworld_display"
+                   template="Tigren_AdvancedCheckout::display.phtml"/>
+        </referenceContainer>
+    </body>
+
+</page>
