@@ -153,26 +153,20 @@ use Magento\Wishlist\Helper\Data;
 
 
         </script>
+
+        <!--    Show popup-->
         <div id="popup-modal" style="display:none;"></div>
         <div class="example-element" data-mage-init='{"show_popup": {}}' style="display:none;">A single div</div>
 
-        <!--    test-->
-        <div id="modal-form">
-            <h1>Hey</h1>
+        <div id="modal-form" style="display: none">
+            <h3>
+                <a href="<?php echo $this->getUrl() . 'checkout' ?>">Process to checkout</a>
+            </h3>
+            <h3>
+                <a href="<?php echo $this->getUrl() . 'tigren_advancedcheckout/index/clearcart' ?>">Clear Cart</a>
+            </h3>
+<!--            <button data-role="action">Close</button>-->
         </div>
-        <a class="action open-modal-form"
-           href="#"
-           title="Modal">
-            <span>Click Me!</span>
-        </a>
-        <script type="text/x-magento-init">
-    {
-        ".open-modal-form": {
-            "Tigren_AdvancedCheckout/js/catalog-add-to-cart.js": {}
-        }
-    }
-        </script>
-
 
     <?php endif; ?>
 <?php endif; ?>
