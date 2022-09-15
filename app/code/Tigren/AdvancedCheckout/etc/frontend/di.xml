@@ -9,6 +9,4 @@
 
     <preference for="Magento\CatalogWidget\Block\Product\ProductsList"
                 type="Tigren\AdvancedCheckout\Override\Block\CatalogWidget\Product\ProductsList"/>
-    <preference for="Magento\Review\Block\Product\ReviewRenderer"
-                type="Tigren\AdvancedCheckout\Override\Block\Review\Product\ReviewRenderer"/>
 </config>

@@ -1,45 +1,53 @@
-require(
-    [
-        'jquery',
-        'Magento_Ui/js/modal/modal'
-    ],
-    function (
-        $,
-        modal
-    ) {
-        var options = {
-            type: 'popup',
-            responsive: true,
-            innerScroll: true,
-            title: 'Custom Form Popup',
-            buttons: [{
-                text: $.mage.__('Close'),
-                class: '',
-                click: function () {
-                    this.closeModal();
-                }
-            }]
-        };
-        // debugger;
-        var popup = modal(options, $('#popup-modal'));
-        $('.tocart').click(function () {
-            //callajax
-            // debugger;
-            var data_product_sku = $(this).attr('data-product-sku');
-            var popupUrl = "<?php echo $this->getUrl().'tigren_advancedcheckout/index/showpopup' ?>";
-            // var popupUrl = "http://magento.localhost.com/tigren_advancedcheckout/index/showpopup";
-            $.ajax({
-                url: popupUrl,
-                data: {
-                    sku: data_product_sku
-                },
-                type: "POST",
-                dataType: 'json'
-            }).done(function (response) {
-                if (response.isShowPopup) {
-                    $('#popup-modal').modal('openModal');
-                }
+define(["jquery", "domReady!", "Magento_Ui/js/modal/modal"], function ($, dom) {
+
+    // $(document).ready(function(){
+    //     $(".tocart").click(function (){
+    //         alert("Add Cataloggg Js");
+    //     });
+    // })
+
+    "use strict";
+    //creating jquery widget
+    $.widget('Vendor.modalForm', {
+        options: {
+            modalForm: '#modal-form',
+            modalButton: '.open-modal-form'
+        },
+        _create: function() {
+            this.options.modalOption = this._getModalOptions();
+            this._bind();
+        },
+        _getModalOptions: function() {
+            /**
+             * Modal options
+             */
+            var options = {
+                type: 'popup',
+                responsive: true,
+                title: 'Sample Title',
+                buttons: [{
+                    text: $.mage.__('Continue'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            return options;
+        },
+        _bind: function(){
+            var modalOption = this.options.modalOption;
+            var modalForm = this.options.modalForm;
+
+            $(document).on('click', this.options.modalButton,  function(){
+                //Initialize modal
+                $(modalForm).modal(modalOption);
+                //open modal
+                $(modalForm).trigger('openModal');
             });
-        });
+        }
     });
 
+    return $.Vendor.modalForm;
+})
