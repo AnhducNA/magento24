@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ @author    Tigren Solutions <info@tigren.com>
   ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
@@ -5,37 +6,39 @@
   -->
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">
-                tigren_customer_question_index.tigren_customer_question_index_data_source
-            </item>
-            <item name="deps" xsi:type="string">
-                tigren_customer_question_index.tigren_customer_question_index_data_source
-            </item>
-        </item>
-        <item name="spinner" xsi:type="string">spinner_columns</item>
-        <item name="buttons" xsi:type="array">
-            <item name="add" xsi:type="array">
-                <item name="name" xsi:type="string">add</item>
-                <item name="label" xsi:type="string" translate="true">Add New Question</item>
-                <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="string">*/*/addnew</item>
+                tigren_customer_question_listing.tigren_customer_question_listing_data_source
             </item>
         </item>
     </argument>
-    <dataSource name="tigren_customer_question_index_data_source">
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add New Question</label>
+            </button>
+        </buttons>
+        <spinner>tigren_customer_question_columns</spinner>
+        <deps>
+            <dep>tigren_customer_question_listing.tigren_customer_question_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="tigren_customer_question_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Tigren\Customer\Ui\DataProvider\Question\Listing</argument>
-            <argument name="name" xsi:type="string">tigren_customer_question_index_data_source</argument>
+            <argument name="class" xsi:type="string">Tigren\Customer\Ui\DataProvider\Rule\Listing</argument>
+            <argument name="name" xsi:type="string">amasty_groupcat_rule_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
-            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
                     <item name="update_url" xsi:type="url" path="mui/index/render"/>
                     <item name="storageConfig" xsi:type="array">
-                        <item name="indexField" xsi:type="string">entity_id</item>
+                        <item name="indexField" xsi:type="string">rule_id</item>
                     </item>
                 </item>
             </argument>
@@ -64,7 +67,7 @@
             <action name="delete">
                 <settings>
                     <confirm>
-                        <message translate="true">Are you sure you want to delete the selected customers?</message>
+                        <message translate="true">Are you sure you want to delete the selected question?</message>
                         <title translate="true">Delete items</title>
                     </confirm>
                     <url path="customer/index/massDelete"/>
@@ -74,7 +77,7 @@
             </action>
         </massaction>
     </listingToolbar>
-    <columns name="spinner_columns">
+    <columns name="tigren_customer_question_columns">
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
