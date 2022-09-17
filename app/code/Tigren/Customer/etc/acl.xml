@@ -9,25 +9,19 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Tigren_Customer::customer" title="Customers" translate="title" sortOrder="40">
-                    <resource id="Tigren_Customer::manage" title="All Customers" translate="title" sortOrder="10">
-                        <resource id="Tigren_Customer::actions" title="Actions" translate="title" sortOrder="10">
-                            <resource id="Tigren_Customer::create" title="Create" sortOrder="10"/>
-                            <resource id="Tigren_Customer::delete" title="Delete" sortOrder="20"/>
-                            <resource id="Tigren_Customer::view" title="View" sortOrder="30">
-                                <resource id="Tigren_Customer::view_additional" title="View Additional Information"
-                                          sortOrder="10"/>
-                            </resource>
-                        </resource>
-                    </resource>
-                </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Tigren_Customer::config_question" title="Customers Section" translate="title"
-                                      sortOrder="50"/>
+                            <resource id="Tigren_Customer::config" title="Tigren Customer Question"
+                                      sortOrder="161801"/>
                         </resource>
                     </resource>
+                </resource>
+                <resource id="Magento_Customer::customer">
+                    <resource id="Tigren_Customer::question" title="Tigren Customer Question" sortOrder="161801" />
+                    <resource id="Tigren_Customer::edit_question" title="Edit Tigren Customer Question" sortOrder="161802" />
+                    <resource id="Tigren_Customer::edit_delete" title="Delete Tigren Customer Question" sortOrder="161803" />
+                    <resource id="Tigren_Customer::request" title="Tigren Customer Group Catalog Request" sortOrder="161804" />
                 </resource>
             </resource>
         </resources>

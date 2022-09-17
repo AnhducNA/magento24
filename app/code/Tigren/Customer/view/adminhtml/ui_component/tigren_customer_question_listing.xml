@@ -6,31 +6,29 @@
   -->
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
-
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">
                 tigren_customer_question_listing.tigren_customer_question_listing_data_source
             </item>
+            <item name="deps" xsi:type="string">
+                tigren_customer_question_listing.tigren_customer_question_listing_data_source
+            </item>
+        </item>
+        <item name="spinner" xsi:type="string">tigren_customer_question_listing_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Question</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/addnew</item>
+            </item>
         </item>
     </argument>
-    <settings>
-        <buttons>
-            <button name="add">
-                <url path="*/*/new"/>
-                <class>primary</class>
-                <label translate="true">Add New Question</label>
-            </button>
-        </buttons>
-        <spinner>tigren_customer_question_columns</spinner>
-        <deps>
-            <dep>tigren_customer_question_listing.tigren_customer_question_listing_data_source</dep>
-        </deps>
-    </settings>
     <dataSource name="tigren_customer_question_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Tigren\Customer\Ui\DataProvider\Rule\Listing</argument>
-            <argument name="name" xsi:type="string">amasty_groupcat_rule_listing_data_source</argument>
+            <argument name="class" xsi:type="string">Tigren\Customer\Ui\DataProvider\Question\Listing</argument>
+            <argument name="name" xsi:type="string">tigren_customer_question_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
@@ -38,7 +36,7 @@
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
                     <item name="update_url" xsi:type="url" path="mui/index/render"/>
                     <item name="storageConfig" xsi:type="array">
-                        <item name="indexField" xsi:type="string">rule_id</item>
+                        <item name="indexField" xsi:type="string">entity_id</item>
                     </item>
                 </item>
             </argument>
@@ -50,18 +48,8 @@
                 <item name="sticky" xsi:type="boolean">true</item>
             </item>
         </argument>
-        <bookmark name="bookmarks"/>
+        <!--        <bookmark name="bookmarks"/>-->
         <columnsControls name="columns_controls"/>
-        <filters name="listing_filters">
-            <filterSelect name="store_ids" provider="${ $.parentName }">
-                <settings>
-                    <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options"/>
-                    <caption translate="true">All Store Views</caption>
-                    <label translate="true">Store View</label>
-                    <dataScope>store_ids</dataScope>
-                </settings>
-            </filterSelect>
-        </filters>
         <paging name="listing_paging"/>
         <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
             <action name="delete">
@@ -77,7 +65,7 @@
             </action>
         </massaction>
     </listingToolbar>
-    <columns name="tigren_customer_question_columns">
+    <columns name="tigren_customer_question_listing_columns">
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -130,10 +118,23 @@
                 </item>
             </argument>
         </column>
-        <actionsColumn name="actions" class="Tigren\Customer\Ui\Component\Listing\Column\Actions">
-            <settings>
-                <indexField>entity_id</indexField>
-            </settings>
+        <actionsColumn name="actions" class="Tigren\Customer\Ui\Component\Listing\Column\ViewAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                    <item name="buttons" xsi:type="array">
+                        <item name="edit" xsi:type="array">
+                            <item name="itemLabel" xsi:type="string" translate="true">Edit</item>
+                            <item name="urlPath" xsi:type="string">tigren_customer/question/edit</item>
+                        </item>
+                        <item name="delete" xsi:type="array">
+                            <item name="itemLabel" xsi:type="string" translate="true">Delete</item>
+                            <item name="urlPath" xsi:type="string">tigren_customer/question/deleteitem</item>
+                        </item>
+                    </item>
+
+                </item>
+            </argument>
         </actionsColumn>
     </columns>
 </listing>

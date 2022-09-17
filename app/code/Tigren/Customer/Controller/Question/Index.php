@@ -51,7 +51,6 @@ class Index extends Action
             return $this->_pageFactory->create();
         } else {
             $this->messageManager->addErrorMessage("You have to login to access this page");
-
             return $this->_redirect('customer/account/login/');
         }
 

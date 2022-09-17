@@ -15,7 +15,7 @@
 
     <body>
         <referenceContainer name="content">
-            <uiComponent name="tigren_customer_question_edit"/>
+            <uiComponent name="tigren_customer_question_form"/>
         </referenceContainer>
     </body>
 </page>
