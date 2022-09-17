@@ -26,6 +26,9 @@ class ProcessOrder implements ObserverInterface
      */
     protected $_order;
 
+    /**
+     * @var CustomerFactory
+     */
     protected $customerFactory;
 
     /**

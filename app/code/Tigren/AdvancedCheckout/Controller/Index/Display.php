@@ -21,10 +21,12 @@ use Magento\Sales\Model\ResourceModel\Order\Address\CollectionFactory;
  */
 class Display extends Action
 {
+
     /**
      * @var CollectionFactory
      */
     protected $addressFactory;
+
     /**
      * @var OrderRepositoryInterface
      */

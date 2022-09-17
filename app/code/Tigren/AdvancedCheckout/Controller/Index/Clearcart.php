@@ -7,24 +7,40 @@
 
 namespace Tigren\AdvancedCheckout\Controller\Index;
 
+use Magento\Checkout\Model\Cart;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\App\ObjectManager;
-use Magento\Checkout\Model\Cart;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
 
+/**
+ * Class Clearcart
+ * @package Tigren\AdvancedCheckout\Controller\Index
+ */
 class Clearcart extends Action
 {
 
+    /**
+     * @var Cart
+     */
     protected $cart;
 
+    /**
+     * @param Context $context
+     * @param Cart $cart
+     */
     public function __construct(
         Context $context,
-        Cart $cart
+        Cart    $cart
     ) {
         $this->cart = $cart;
         parent::__construct($context);
     }
 
+    /**
+     * @return ResponseInterface|Redirect|ResultInterface|void
+     */
     public function execute()
     {
 //        $objectManager = ObjectManager::getInstance();
@@ -39,9 +55,12 @@ class Clearcart extends Action
 
             return $resultRedirect;
         }
-
     }
 
+    /**
+     * @param $itemId
+     * @return void
+     */
     public function removeCartById($itemId)
     {
 //        $objectManager = ObjectManager::getInstance();

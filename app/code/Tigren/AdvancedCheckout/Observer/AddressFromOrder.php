@@ -10,13 +10,23 @@ namespace Tigren\AdvancedCheckout\Observer;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Model\ResourceModel\Order\Address\CollectionFactory;
 
+/**
+ * Class AddressFromOrder
+ * @package Tigren\AdvancedCheckout\Observer
+ */
 class AddressFromOrder extends \Magento\Framework\View\Element\Template
 {
+    /**
+     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
+     * @param CollectionFactory $addressCollection
+     * @param array $data
+     */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context                   $context,
-        \Magento\Sales\Api\OrderRepositoryInterface                        $orderRepository,
-        CollectionFactory $addressCollection,
-        array                                                              $data = []
+        \Magento\Framework\View\Element\Template\Context $context,
+        \Magento\Sales\Api\OrderRepositoryInterface      $orderRepository,
+        CollectionFactory                                $addressCollection,
+        array                                            $data = []
     ) {
         $this->orderRepository = $orderRepository;
         $this->addressCollection = $addressCollection;
@@ -36,6 +46,11 @@ class AddressFromOrder extends \Magento\Framework\View\Element\Template
     }
 
     /* get Shipping address data of specific order */
+    /**
+     * @param $orderId
+     * @return null
+     * @throws LocalizedException
+     */
     public function getShippingAddress($orderId)
     {
         $order = $this->getOrderData($orderId);
@@ -49,6 +64,11 @@ class AddressFromOrder extends \Magento\Framework\View\Element\Template
     }
 
     /* get Billing address data of specific order */
+    /**
+     * @param $orderId
+     * @return mixed
+     * @throws LocalizedException
+     */
     public function getBillingAddress($orderId)
     {
         $order = $this->getOrderData($orderId);
