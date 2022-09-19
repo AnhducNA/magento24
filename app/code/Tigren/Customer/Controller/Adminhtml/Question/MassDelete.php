@@ -17,9 +17,10 @@ use Tigren\Customer\Model\ResourceModel\Question\CollectionFactory;
 
 class MassDelete extends Action
 {
-    public CollectionFactory $collectionFactory;
+    protected CollectionFactory $collectionFactory;
 
-    public Filter $filter;
+    protected Filter $filter;
+    protected QuestionFactory $questionFactory;
 
     public function __construct(
         Context           $context,
