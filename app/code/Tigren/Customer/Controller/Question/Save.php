@@ -88,7 +88,10 @@ class Save extends Action
             $model = $this->_questionFactory->create();
             $model->setData($newData);
             $model->save();
+            echo "<pre>";
+            print_r($model->getData());
         }
+
         $this->messageManager->addSuccess('Save question successfully.');
 
         return $this->resultRedirectFactory->create()

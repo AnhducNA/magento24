@@ -6,18 +6,15 @@ use Exception;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Stdlib\DateTime\DateTime;
-use Tigren\Customer\Model\Question as QuestionModel;
 use Tigren\Customer\Model\QuestionFactory;
 
 class Save extends Action
 {
-//    protected $questionModel;
     protected $questionFactory;
     protected $_date;
 
-    public function __construct(Context $context, QuestionFactory $questionFactory, QuestionModel $questionModel, DateTime $date)
+    public function __construct(Context $context, QuestionFactory $questionFactory, DateTime $date)
     {
-//        $this->questionModel = $questionModel;
         $this->questionFactory = $questionFactory;
         $this->_date = $date;
         parent::__construct($context);
@@ -41,15 +38,9 @@ class Save extends Action
 
                 } else {
 //            Create
-
                     $model = $this->questionFactory->create();
-                    $model->setTitle($newData['title']);
-                    $model->setContent($newData['content']);
                     $model->setData($newData);
                     $model->save();
-
-                    echo "<pre>";
-                    print_r($model->getData());
                 }
 
                 $this->messageManager->addSuccess('Save question successfully.');

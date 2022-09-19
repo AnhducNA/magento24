@@ -13,9 +13,5 @@
         <add id="Tigren_Customer::question1_menu" title="Quesion List View" module="Tigren_Customer" sortOrder="1"
              parent="Tigren_Customer::question_menu" action="tigren_customer/question/index"
              resource="Tigren_Customer::menu"/>
-        <add id="Tigren_Customer::question2_menu" title="Quesion List Create" module="Tigren_Customer" sortOrder="1"
-             parent="Tigren_Customer::question_menu" action="tigren_customer/question/addnew"
-             resource="Tigren_Customer::menu2"/>
-
     </menu>
 </config>
