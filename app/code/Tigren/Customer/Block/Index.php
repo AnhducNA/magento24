@@ -55,8 +55,9 @@ class Index extends Template
     /**
      * @return array
      */
-    public function getCollection()
+    public function getCollection(): array
     {
+        $collectionByID = [];
         if ($this->_customerSession->isLoggedIn()) {
             $idCustomerLogin = $this->_customerSession->getCustomerId();
 //            echo $idCustomerLogin ? $idCustomerLogin : null;
