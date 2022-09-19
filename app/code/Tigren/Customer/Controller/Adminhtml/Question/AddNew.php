@@ -40,7 +40,6 @@ class AddNew extends Action
      */
     public function execute()
     {
-//        die('aa');
         $resultPage = $this->_pageFactory->create();
         $resultPage->getConfig()->getTitle()
             ->prepend(__('Tigren Customer Question: Create'));
