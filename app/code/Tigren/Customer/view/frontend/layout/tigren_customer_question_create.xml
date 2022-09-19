@@ -12,7 +12,7 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <block class="Tigren\Customer\Block\Frontend\Save" name="tigren_customer_question_create"
+            <block class="Tigren\Customer\Block\Save" name="tigren_customer_question_create"
                    template="Tigren_Customer::form.phtml"/>
         </referenceContainer>
     </body>
