@@ -20,7 +20,6 @@ use Magento\Framework\Controller\ResultInterface;
  */
 class Clearcart extends Action
 {
-
     /**
      * @var Cart
      */
@@ -43,29 +42,14 @@ class Clearcart extends Action
      */
     public function execute()
     {
-//        $objectManager = ObjectManager::getInstance();
-//        $cart = $objectManager->get('Magento\Checkout\Model\Cart');
         $allItems = $this->cart->getQuote()->getAllVisibleItems();
         foreach ($allItems as $item) {
             $itemId = $item->getItemId();
             $this->cart->removeItem($itemId)->save();
 
             $resultRedirect = $this->resultRedirectFactory->create();
-            $resultRedirect->setPath('/'); // set this path to what you want your customer to go
-
+            $resultRedirect->setPath('/');
             return $resultRedirect;
         }
-    }
-
-    /**
-     * @param $itemId
-     * @return void
-     */
-    public function removeCartById($itemId)
-    {
-//        $objectManager = ObjectManager::getInstance();
-//        $cart = $objectManager->get('Magento\Checkout\Model\Cart');
-//        $cart->removeItem($itemId)->save();
-        // item removed successfully
     }
 }

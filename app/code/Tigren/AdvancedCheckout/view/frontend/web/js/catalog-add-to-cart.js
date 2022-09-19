@@ -43,13 +43,7 @@ define(["jquery", "domReady!", "Magento_Ui/js/modal/modal"], function ($, dom) {
             $(document).on('click', this.options.modalButton, function () {
 
                 var data_product_sku = $(this).attr('data-product-sku');
-                console.log(data_product_sku);
-                // var popupUrl = "<?php echo $this->getUrl().'tigren_advancedcheckout/index/showpopup'; ?>";
-                // var popupUrl = "http://magento24.localhost.com/tigren_advancedcheckout/index/showpopup";
                 var popupUrl = window.location.origin+"/tigren_advancedcheckout/index/showpopup";
-                console.log(popupUrl);
-                //callajax
-                // debugger;
                 $.ajax({
                     url: popupUrl,
                     data: {
@@ -58,7 +52,6 @@ define(["jquery", "domReady!", "Magento_Ui/js/modal/modal"], function ($, dom) {
                     type: "POST",
                     dataType: 'json'
                 }).done(function (response) {
-                    console.log(1);
                     if (response.isShowPopup) {
                         //Initialize modal
                         $(modalForm).modal(modalOption);

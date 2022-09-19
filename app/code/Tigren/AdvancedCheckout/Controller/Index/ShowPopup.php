@@ -60,7 +60,8 @@ class ShowPopup extends Action
     }
 
     /**
-     * @return ResponseInterface|Json|ResultInterface
+     * @return Json
+     * @throws NoSuchEntityException
      */
     public function execute()
     {
@@ -78,7 +79,6 @@ class ShowPopup extends Action
                 'isShowPopup' => true,
             ];
         }
-        /** @var Json $resultJson */
         $resultJson = $this->resultJsonFactory->create();
 
         return $resultJson->setData($response);

@@ -11,9 +11,6 @@ use Magento\Customer\Model\CustomerFactory;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Sales\Model\Order;
-use Zend_Log;
-use Zend_Log_Exception;
-use Zend_Log_Writer_Stream;
 
 /**
  * Class ProcessOrder
@@ -33,6 +30,7 @@ class ProcessOrder implements ObserverInterface
 
     /**
      * @param Order $order
+     * @param CustomerFactory $customerFactory
      */
     public function __construct(
         Order           $order,
@@ -45,36 +43,27 @@ class ProcessOrder implements ObserverInterface
     /**
      * @param Observer $observer
      * @return $this
-     * @throws Zend_Log_Exception
      */
     public function execute(Observer $observer)
     {
-        $writer = new Zend_Log_Writer_Stream(BP . '/var/log/custom.log');
-        $logger = new Zend_Log();
-        $logger->addWriter($writer);
-//        $logger->info(print_r('hihi', true));
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $customerSession = $objectManager->get('Magento\Customer\Model\Session');
+        if (!($customerSession->isLoggedIn())) {
+            $order = $observer->getEvent()->getData('order');
+            $shippingAddress = $order->getShippingAddress();
+            $email = $shippingAddress->getEmail();
+            $firstName = $shippingAddress->getFirstName();
+            $lastName = $shippingAddress->getLastName();
 
-        $order = $observer->getEvent()->getData('order');
-        $quote = $observer->getEvent()->getQuote();
-        $shippingAddress = $order->getShippingAddress();
-        $email = $shippingAddress->getEmail();
-        $firstName = $shippingAddress->getFirstName();
-        $lastName = $shippingAddress->getLastName();
+            $customer = $this->customerFactory->create();
 
-        $customer = $this->customerFactory->create();
-
-        // Preparing data for new customer
-        $customer->setEmail($email);
-        $customer->setFirstname($firstName);
-        $customer->setLastname($lastName);
-        $customer->setPassword("password");
-
-        // Save data
-        $customer->save();
-
-        $logger->info(print_r($email, true));
-        $logger->info(print_r($order->getId(), true));
-
+            $customer->setEmail($email);
+            $customer->setFirstname($firstName);
+            $customer->setLastname($lastName);
+            $customer->setPassword("password");
+            $customer->save();
+        }
         return $this;
+
     }
 }
