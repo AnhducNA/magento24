@@ -20,7 +20,7 @@ class Display extends Action
 {
 
     /**
-     * @return ResponseInterface|ResultInterface|void
+     * @return void
      */
     public function execute()
     {
