@@ -9,6 +9,6 @@ use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'Tigren_Api',
+    'Tigren_AdvancedCustomer',
     __DIR__
 );
