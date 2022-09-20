@@ -47,7 +47,7 @@
                 <item name="sticky" xsi:type="boolean">true</item>
             </item>
         </argument>
-        <bookmark name="bookmarks"/>
+<!--        <bookmark name="bookmarks"/>-->
         <columnsControls name="columns_controls"/>
         <filters name="listing_filters">
             <filterSelect name="store_ids" provider="${ $.parentName }">
