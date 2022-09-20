@@ -68,7 +68,6 @@ class Save extends Action
                     $model->setTitle($newData['title']);
                     $model->setContent($newData['content']);
                     $model->setCreatedAt($newData['created_at']);
-//                    $model->addData($newData);
                     $model->save();
                 }
 

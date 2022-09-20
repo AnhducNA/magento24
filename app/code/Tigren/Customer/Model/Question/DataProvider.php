@@ -29,6 +29,15 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      */
     protected $dataPersistor;
 
+    /**
+     * @param $name
+     * @param $primaryFieldName
+     * @param $requestFieldName
+     * @param CollectionFactory $collectionFactory
+     * @param DataPersistorInterface $dataPersistor
+     * @param array $meta
+     * @param array $data
+     */
     public function __construct(
         $name,
         $primaryFieldName,
