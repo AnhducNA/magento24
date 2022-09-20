@@ -8,7 +8,6 @@
 namespace Tigren\CustomerGroupCatalog\Model\Rule;
 
 use Magento\Framework\App\Request\DataPersistorInterface;
-use Magento\Ui\DataProvider\AbstractDataProvider;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\Collection;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\CollectionFactory;
 use Tigren\CustomerGroupCatalog\Model\Rule;
@@ -18,7 +17,7 @@ use Tigren\CustomerGroupCatalog\Model\Rule;
  *
  * @package Tigren\CustomerGroupCatalog\Model\Rule
  */
-class DataProvider extends AbstractDataProvider
+class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
     /**
      * @var Collection
@@ -28,7 +27,7 @@ class DataProvider extends AbstractDataProvider
     /**
      * @var array
      */
-    protected $loadedData = [];
+    protected $loadedData ;
 
     /**
      * @var DataPersistorInterface
@@ -67,24 +66,27 @@ class DataProvider extends AbstractDataProvider
     /**
      * @return array
      */
-    public function getData(): array
+    public function getData()
     {
         if (isset($this->loadedData)) {
             return $this->loadedData;
         }
         $items = $this->collection->getItems();
         /** @var Rule $rule */
+
+
         foreach ($items as $rule) {
+//                    echo "<pre>"; print_r($rule->getData()); die;
             $rule->load($rule->getId());
             $this->loadedData[$rule->getId()] = $rule->getData();
         }
 
-        $data = $this->dataPersistor->get('tigren_customergroupcatalog_rule');
+        $data = $this->dataPersistor->get('tigren_customer_groupcatalog_rule');
         if (!empty($data)) {
             $rule = $this->collection->getNewEmptyItem();
             $rule->setData($data);
             $this->loadedData[$rule->getId()] = $rule->getData();
-            $this->dataPersistor->clear('tigren_customergroupcatalog_rule');
+            $this->dataPersistor->clear('tigren_customer_groupcatalog_rule');
         }
 
         return $this->loadedData;

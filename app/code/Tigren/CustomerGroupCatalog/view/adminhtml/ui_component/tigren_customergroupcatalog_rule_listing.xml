@@ -62,8 +62,10 @@
         <paging name="listing_paging"/>
         <massaction name="listing_massaction">
             <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                <item name="data" xsi:type="array">
+                    <!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>-->
+<!--                    <item name="selectProvider" xsi:type="string">article_grid.article_grid.sonal_article_columns.ids</item>-->
+                    <item name="displayArea" xsi:type="string">bottom</item>
                     <item name="indexField" xsi:type="string">rule_id</item>
                 </item>
             </argument>
@@ -72,12 +74,10 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="tigren_customergroupcatalog/rule/massDelete"/>
+                        <item name="url" xsi:type="url" path="tigren_customergroupcatalog/rule/massdelete"/>
                         <item name="confirm" xsi:type="array">
-                            <item name="title" xsi:type="string" translate="true">Delete Rule</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you want to delete
-                                selected rule(s)?
-                            </item>
+                            <item name="title" xsi:type="string" translate="true">Delete Rule?</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to delete selected rule(s)?</item>
                         </item>
                     </item>
                 </argument>

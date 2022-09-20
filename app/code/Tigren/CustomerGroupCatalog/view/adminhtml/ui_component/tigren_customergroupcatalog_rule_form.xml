@@ -15,7 +15,7 @@
                 tigren_customergroupcatalog_rule_form.tigren_customergroupcatalog_rule_form_data_source
             </item>
         </item>
-        <item name="label" xsi:type="string" translate="true">Update Customer Group Catalog Rule</item>
+        <item name="label" xsi:type="string" translate="true">Customer Group Catalog Rule</item>
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
             <item name="namespace" xsi:type="string">tigren_customergroupcatalog_rule_form</item>
@@ -33,21 +33,25 @@
     </argument>
 
     <dataSource name="tigren_customergroupcatalog_rule_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Tigren\CustomerGroupCatalog\Model\Rule\DataProvider</argument>
+            <argument name="name" xsi:type="string">tigren_customergroupcatalog_rule_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">rule_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="tigren_customergroupcatalog/rule/save"/>
+                </item>
+            </argument>
+        </argument>
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
         <settings>
-            <submitUrl path="tigren_customergroupcatalog/rule/save"/>
-            <validateUrl path="tigren_customergroupcatalog/rule/validate"/>
+            <validateUrl path="tigren_customergroupcatalog/rule/index/"/>
         </settings>
-        <dataProvider class="Tigren\CustomerGroupCatalog\Model\Rule\DataProvider" name="tigren_customergroupcatalog_rule_form_data_source">
-            <settings>
-                <requestFieldName>rule_id</requestFieldName>
-                <primaryFieldName>rule_id</primaryFieldName>
-            </settings>
-        </dataProvider>
     </dataSource>
 
     <fieldset name="general">
@@ -55,7 +59,6 @@
             <item name="config" xsi:type="array">
                 <item name="label" xsi:type="string" translate="true">Rule Information</item>
                 <item name="sortOrder" xsi:type="number">10</item>
-                <item name="additionalClasses" xsi:type="string">amgroupcat-fieldset-container-info</item>
             </item>
         </argument>
         <field name="rule_id">
@@ -97,7 +100,7 @@
                 <item name="config" xsi:type="array">
                     <item name="label" xsi:type="string" translate="true">Rule Name</item>
                     <item name="additionalClasses" xsi:type="string">amgroupcat-field-input</item>
-                    <item name="placeholder" xsi:type="string" translate="true">Select...</item>
+                    <item name="placeholder" xsi:type="string" translate="true">Rule Name...</item>
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>

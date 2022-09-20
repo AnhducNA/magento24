@@ -15,11 +15,10 @@ use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
 /**
- * Class AddNew
- *
- * @package Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule
+ * Class Index
+ * @package Tigren\Customer\Controller\Adminhtml\Question
  */
-class AddNew extends Action
+class Edit extends Action
 {
     /**
      * @var PageFactory
@@ -27,26 +26,24 @@ class AddNew extends Action
     protected $_pageFactory;
 
     /**
-     * @param  Context  $context
-     * @param  PageFactory  $pageFactory
+     * @param Context $context
+     * @param PageFactory $pageFactory
      */
-    public function __construct(
-        Action\Context $context,
-        PageFactory $pageFactory
-    ) {
+    public function __construct(Context $context, PageFactory $pageFactory)
+    {
         $this->_pageFactory = $pageFactory;
         parent::__construct($context);
     }
 
     /**
-     * @return ResponseInterface|ResultInterface|Page
+     * @return Page|ResultInterface
      */
     public function execute()
     {
+//        die('aa');
         $resultPage = $this->_pageFactory->create();
-
         $resultPage->getConfig()->getTitle()
-            ->prepend(__('Tigren Customer Group Catalog Rules: Add New Rule'));
+            ->prepend(__('Tigren Customer GroupCatalo Rule: Edit'));
 
         return $resultPage;
     }
