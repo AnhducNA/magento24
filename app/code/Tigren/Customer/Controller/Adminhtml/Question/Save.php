@@ -10,7 +10,6 @@ namespace Tigren\Customer\Controller\Adminhtml\Question;
 use Exception;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Stdlib\DateTime\DateTime;
@@ -47,7 +46,7 @@ class Save extends Action
     }
 
     /**
-     * @return ResponseInterface|Redirect|ResultInterface|void
+     * @return Redirect|ResultInterface|void
      */
     public function execute()
     {
@@ -57,12 +56,14 @@ class Save extends Action
             $newData['created_at'] = $date;
 
             try {
-                if (!empty($data['id'])) {
-                    $model = $this->questionFactory->create()->load($data['id']);
+                if (isset($newData['entity_id'])) {
+
+                    $model = $this->questionFactory->create()->load($newData['entity_id']);
                     $model->setTitle($newData['title']);
                     $model->setContent($newData['content']);
                     $model->save();
                 } else {
+
                     $model = $this->questionFactory->create();
                     $model->setTitle($newData['title']);
                     $model->setContent($newData['content']);
@@ -72,14 +73,14 @@ class Save extends Action
                 }
 
                 $this->messageManager->addSuccess('Save question successfully.');
-
-                return $this->resultRedirectFactory->create()
-                    ->setPath('tigren_customer/question/index');
             } catch (Exception $e) {
                 $this->messageManager->addErrorMessage(
                     __('Something went wrong while saving the rule data. Please review the error log.')
                 );
             }
         }
+
+        return $this->resultRedirectFactory->create()
+            ->setPath('tigren_customer/question/index');
     }
 }

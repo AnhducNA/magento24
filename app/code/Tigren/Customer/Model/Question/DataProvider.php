@@ -7,10 +7,10 @@
 
 namespace Tigren\Customer\Model\Question;
 
+use Magento\Framework\App\Request\DataPersistorInterface;
+use Tigren\Customer\Model\Question;
 use Tigren\Customer\Model\ResourceModel\Question\Collection;
 use Tigren\Customer\Model\ResourceModel\Question\CollectionFactory;
-use Tigren\Customer\Model\Question;
-use Magento\Framework\App\Request\DataPersistorInterface;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
