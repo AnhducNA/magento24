@@ -12,4 +12,3 @@ ComponentRegistrar::register(
     'Tigren_Customer',
     __DIR__
 );
-

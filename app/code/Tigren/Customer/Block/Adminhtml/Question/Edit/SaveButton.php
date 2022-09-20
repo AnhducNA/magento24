@@ -17,12 +17,14 @@ class SaveButton extends GenericButton implements ButtonProviderInterface
      */
     public function getButtonData()
     {
-        $data = [
-            'label'    => __('Save'),
-            'class'    => 'save primary',
-            'on_click' => '',
-        ];
-
+        $data = [];
+        if ($this->authorization->isAllowed('Tigren_Customer::edit_question')) {
+            $data = [
+                'label' => __('Save'),
+                'class' => 'save primary',
+                'on_click' => '',
+            ];
+        }
         return $data;
     }
 }

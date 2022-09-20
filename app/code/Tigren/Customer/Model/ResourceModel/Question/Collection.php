@@ -7,10 +7,8 @@
 
 namespace Tigren\Customer\Model\ResourceModel\Question;
 
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-
 class Collection extends
-    AbstractCollection
+    \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     protected function _construct()
     {

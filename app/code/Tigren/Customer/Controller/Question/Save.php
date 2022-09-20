@@ -16,7 +16,6 @@ use Magento\Framework\Stdlib\DateTime\DateTime;
 use Magento\Framework\View\Result\PageFactory;
 use Tigren\Customer\Model\QuestionFactory;
 
-
 /**
  * Class Save
  * @package Tigren\Customer\Controller\Question
@@ -84,12 +83,13 @@ class Save extends Action
             $model->setContent($newData['content']);
             $model->setAuthorId($newData['author_id']);
             $model->save();
-
         } else {
 //            Create
             $model = $this->_questionFactory->create();
             $model->setData($newData);
             $model->save();
+            echo "<pre>";
+            print_r($model->getData());
         }
 
         $this->messageManager->addSuccess('Save question successfully.');

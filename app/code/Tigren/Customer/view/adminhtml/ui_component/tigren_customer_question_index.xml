@@ -29,7 +29,7 @@
             <argument name="class" xsi:type="string">Tigren\Customer\Ui\DataProvider\Question\Listing</argument>
             <argument name="name" xsi:type="string">tigren_customer_question_index_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
-            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
@@ -41,28 +41,33 @@
             </argument>
         </argument>
     </dataSource>
-    <!-- For Creating a container -->
     <listingToolbar name="listing_top">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="sticky" xsi:type="boolean">true</item>
             </item>
         </argument>
-        <!-- For Displaying Bookmarks -->
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
-        <filters name="listing_filters"/>
-
+        <filters name="listing_filters">
+            <filterSelect name="store_ids" provider="${ $.parentName }">
+                <settings>
+                    <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options"/>
+                    <caption translate="true">All Store Views</caption>
+                    <label translate="true">Store View</label>
+                    <dataScope>store_ids</dataScope>
+                </settings>
+            </filterSelect>
+        </filters>
         <paging name="listing_paging"/>
-        <!-- For Displaying Mass Action -->
         <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
             <action name="delete">
                 <settings>
                     <confirm>
-                        <message translate="true">Are you sure you want to delete the selected questions?</message>
+                        <message translate="true">Are you sure you want to delete the selected customers?</message>
                         <title translate="true">Delete items</title>
                     </confirm>
-                    <url path="tigren_customer/question/massdelete"/>
+                    <url path="customer/index/massDelete"/>
                     <type>delete</type>
                     <label translate="true">Delete</label>
                 </settings>
@@ -118,14 +123,4 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Author ID</item>
-                </item>
-            </argument>
-        </column>
-        <actionsColumn name="actions" class="Tigren\Customer\Ui\Component\Listing\Column\Actions">
-            <settings>
-                <indexField>id</indexField>
-            </settings>
-        </actionsColumn>
-    </columns>
-</listing>
+                    <item name="label" xsi:type="string" translate="t

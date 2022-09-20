@@ -7,34 +7,33 @@
 
 namespace Tigren\Customer\Block\Adminhtml\Question\Edit;
 
-use Magento\Backend\Block\Widget\Context;
-use Magento\CatalogRule\Block\Adminhtml\Edit\GenericButton as CatalogRuleGenericButton;
-use Magento\Framework\AuthorizationInterface;
-use Magento\Framework\Registry;
 use Tigren\Customer\Controller\RegistryConstants;
+use Magento\CatalogRule\Block\Adminhtml\Edit\GenericButton as CustomerQuestionGenericButton;
 
-class GenericButton extends CatalogRuleGenericButton
+class GenericButton extends CustomerQuestionGenericButton
 {
     /**
-     * @var AuthorizationInterface
+     * @var \Magento\Framework\AuthorizationInterface
      */
     protected $authorization;
 
     public function __construct(
-        Context     $context,
-        Registry               $registry,
-        AuthorizationInterface $authorization
+        \Magento\Backend\Block\Widget\Context $context,
+        \Magento\Framework\Registry $registry,
+        \Magento\Framework\AuthorizationInterface $authorization
     ) {
         $this->authorization = $context->getAuthorization() ?: $authorization;
         parent::__construct($context, $registry);
     }
 
-
-    public function getRuleId()
+    /**
+     * Return the current Catalog Rule Id.
+     *
+     * @return int|null
+     */
+    public function getQuestionId()
     {
-        $groupcatRule
-            = $this->registry->registry(RegistryConstants::CURRENT_GROUPCATALOG_RULE_ID);
-
-        return $groupcatRule ? $groupcatRule->getId() : null;
+        $customerQuestino = $this->registry->registry(RegistryConstants::CURRENT_CUSTOMER_QUESTION_ID);
+        return $customerQuestino ? $customerQuestino->getId() : null;
     }
 }

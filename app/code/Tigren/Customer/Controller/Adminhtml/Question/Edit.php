@@ -7,31 +7,43 @@
 
 namespace Tigren\Customer\Controller\Adminhtml\Question;
 
+use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
 /**
- * Class Edit
+ * Class Index
  * @package Tigren\Customer\Controller\Adminhtml\Question
  */
 class Edit extends Action
 {
-    protected $resultPageFactory;
+    /**
+     * @var PageFactory
+     */
+    protected $_pageFactory;
 
-    public function __construct(
-        Context     $context,
-        PageFactory $resultPageFactory
-    ) {
-        $this->resultPageFactory = $resultPageFactory;
+    /**
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     */
+    public function __construct(Context $context, PageFactory $pageFactory)
+    {
+        $this->_pageFactory = $pageFactory;
         parent::__construct($context);
     }
 
+    /**
+     * @return ResponseInterface|ResultInterface|Page
+     */
     public function execute()
     {
-        $questionId = (int)$this->getRequest()->getParam('id');
-        $isExistingQuestion = (bool)$questionId;
-        $resultPage = $this->resultPageFactory->create();
+//        die('aa');
+        $resultPage = $this->_pageFactory->create();
+        $resultPage->getConfig()->getTitle()
+            ->prepend(__('Tigren Customer Question: Edit'));
 
         return $resultPage;
     }

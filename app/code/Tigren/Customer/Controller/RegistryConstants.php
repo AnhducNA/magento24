@@ -12,6 +12,5 @@ class RegistryConstants
     /**
      * Key for current groupcat rule in registry
      */
-    public const CURRENT_GROUPCATALOG_RULE_ID = 'current_tigren_customer_question';
-//    public const CURRENT_GROUPCAT_RULE_ID = 'current_amasty_groupcat_rule';
+    public const CURRENT_CUSTOMER_QUESTION_ID = 'current_tigren_customer_question';
 }

@@ -10,78 +10,45 @@ namespace Tigren\Customer\Controller\Adminhtml\Question;
 use Exception;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\Model\View\Result\Redirect;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Ui\Component\MassAction\Filter;
+use Tigren\Customer\Model\QuestionFactory;
 use Tigren\Customer\Model\ResourceModel\Question\CollectionFactory;
 
-/**
- * Class MassDelete
- * @package Tigren\Customer\Controller\Adminhtml\Question
- */
 class MassDelete extends Action
 {
-    /**
-     * @var Filter
-     */
-    protected $filter;
+    protected CollectionFactory $collectionFactory;
 
-    /**
-     * @var CollectionFactory
-     */
-    protected $collectionFactory;
+    protected Filter $filter;
+    protected QuestionFactory $questionFactory;
 
-    /**
-     * @param Context $context
-     * @param Filter $filter
-     * @param CollectionFactory $collectionFactory
-     */
     public function __construct(
         Context           $context,
         Filter            $filter,
-        CollectionFactory $collectionFactory
+        CollectionFactory $collectionFactory,
+        QuestionFactory   $questionFactory
     ) {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
+        $this->questionFactory = $questionFactory;
         parent::__construct($context);
     }
 
-    /**
-     * Execute action.
-     *
-     * @return Redirect
-     *
-     * @throws LocalizedException|Exception
-     */
     public function execute()
     {
-//        die('aa');
-        /** @var Redirect $resultRedirect */
-        $resultRedirect = $this->resultRedirectFactory->create();
-
         try {
             $collection = $this->filter->getCollection($this->collectionFactory->create());
-
-            $done = 0;
-            foreach ($collection as $item) {
-                // Your action here.
-                $item->delete();
-                ++$done;
+            $count = 0;
+            foreach ($collection as $question) {
+                echo "<pre>";
+                print_r($question->getData());
+                $this->questionFactory->create()->load($question['entity_id'])->delete();
             }
-            if ($done) {
-                $this->messageManager->addSuccess(__('A total of %1 record(s) were modified.', $done));
-            }
+            $this->messageManager->addSuccess(__('A total of %1 blog(s) have been deleted.', $count));
         } catch (Exception $e) {
-            $this->messageManager->addError($e->getMessage());
+            $this->messageManager->addError(__($e->getMessage()));
         }
-        return $resultRedirect->setUrl($this->_redirect->getRefererUrl());
+        return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('tigren_customer/question/index');
     }
 
-    /**
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('Tigren_Customer::mass_delete');
-    }
 }
