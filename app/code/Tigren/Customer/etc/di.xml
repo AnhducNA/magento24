@@ -9,12 +9,12 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="tigren_customer_question_listing_data_source" xsi:type="string">
-                    Tigren\Customer\Model\ResourceModel\Question\Collection
+                    Tigren\Customer\Model\ResourceModel\Grid\Question\Collection
                 </item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="tigrenCustomerQuestionSearchResult"
+    <virtualType name="Tigren\Customer\Model\ResourceModel\Grid\Question\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">tigren_customer_question</argument>

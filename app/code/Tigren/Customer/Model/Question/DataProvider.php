@@ -8,6 +8,7 @@
 namespace Tigren\Customer\Model\Question;
 
 use Magento\Framework\App\Request\DataPersistorInterface;
+use Magento\Framework\DataObject\IdentityInterface;
 use Tigren\Customer\Model\Question;
 use Tigren\Customer\Model\ResourceModel\Question\Collection;
 use Tigren\Customer\Model\ResourceModel\Question\CollectionFactory;
@@ -30,9 +31,9 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     protected $dataPersistor;
 
     /**
-     * @param $name
-     * @param $primaryFieldName
-     * @param $requestFieldName
+     * @param string $name
+     * @param string $primaryFieldName
+     * @param string $requestFieldName
      * @param CollectionFactory $collectionFactory
      * @param DataPersistorInterface $dataPersistor
      * @param array $meta
