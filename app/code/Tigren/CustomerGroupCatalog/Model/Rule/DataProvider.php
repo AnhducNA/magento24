@@ -8,16 +8,16 @@
 namespace Tigren\CustomerGroupCatalog\Model\Rule;
 
 use Magento\Framework\App\Request\DataPersistorInterface;
+use Magento\Ui\DataProvider\AbstractDataProvider;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\Collection;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\CollectionFactory;
 use Tigren\CustomerGroupCatalog\Model\Rule;
 
 /**
  * Class DataProvider
- *
  * @package Tigren\CustomerGroupCatalog\Model\Rule
  */
-class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class DataProvider extends AbstractDataProvider
 {
     /**
      * @var Collection
@@ -71,12 +71,11 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         if (isset($this->loadedData)) {
             return $this->loadedData;
         }
+
         $items = $this->collection->getItems();
+
         /** @var Rule $rule */
-
-
         foreach ($items as $rule) {
-//                    echo "<pre>"; print_r($rule->getData()); die;
             $rule->load($rule->getId());
             $this->loadedData[$rule->getId()] = $rule->getData();
         }

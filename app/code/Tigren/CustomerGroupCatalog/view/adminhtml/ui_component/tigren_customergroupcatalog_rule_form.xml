@@ -9,10 +9,10 @@
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">
-                tigren_customergroupcatalog_rule_form.tigren_customergroupcatalog_rule_form_data_source
+                tigren_customergroupcatalog_rule_form.tigren_customergroupcatalog_rule_listing_data_source
             </item>
             <item name="deps" xsi:type="string">
-                tigren_customergroupcatalog_rule_form.tigren_customergroupcatalog_rule_form_data_source
+                tigren_customergroupcatalog_rule_form.tigren_customergroupcatalog_rule_listing_data_source
             </item>
         </item>
         <item name="label" xsi:type="string" translate="true">Customer Group Catalog Rule</item>
@@ -32,10 +32,10 @@
         </item>
     </argument>
 
-    <dataSource name="tigren_customergroupcatalog_rule_form_data_source">
+    <dataSource name="tigren_customergroupcatalog_rule_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Tigren\CustomerGroupCatalog\Model\Rule\DataProvider</argument>
-            <argument name="name" xsi:type="string">tigren_customergroupcatalog_rule_form_data_source</argument>
+            <argument name="name" xsi:type="string">tigren_customergroupcatalog_rule_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">rule_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">

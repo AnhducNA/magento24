@@ -12,7 +12,6 @@ use Magento\Framework\Model\AbstractModel;
 
 /**
  * Class Rule
- *
  * @package Tigren\CustomerGroupCatalog\Model
  */
 class Rule extends AbstractModel implements IdentityInterface

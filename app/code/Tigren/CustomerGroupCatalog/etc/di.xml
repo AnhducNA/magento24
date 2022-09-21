@@ -9,18 +9,12 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="tigren_customergroupcatalog_rule_listing_data_source" xsi:type="string">
-                    Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\Collection
-                </item>
-                <item name="tigren_customergroupcatalog_rule_editing_data_source" xsi:type="string">
-                    Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\Collection
-                </item>
-                <item name="tigren_customergroupcatalog_rule_form_data_source" xsi:type="string">
-                    Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\Collection
+                    Tigren\CustomerGroupCatalog\Model\ResourceModel\Grid\Rule\Collection
                 </item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\Collection"
+    <virtualType name="Tigren\CustomerGroupCatalog\Model\ResourceModel\Grid\Rule\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">tigren_customer_groupcatalog_rule</argument>
