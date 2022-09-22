@@ -41,7 +41,6 @@ define(["jquery", "domReady!", "Magento_Ui/js/modal/modal"], function ($, dom) {
             var modalForm = this.options.modalForm;
 
             $(document).on('click', this.options.modalButton, function () {
-
                 var data_product_sku = $(this).attr('data-product-sku');
                 var popupUrl = window.location.origin+"/tigren_advancedcheckout/index/showpopup";
                 $.ajax({
