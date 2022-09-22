@@ -7,10 +7,13 @@
 
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Edit question</title>
+    </head>
     <body>
         <referenceContainer name="content">
-            <block class="Tigren\AdvancedCustomer\Block\Index" name="tigren_customer_question_index"
-                   template="Tigren_AdvancedCustomer::index.phtml" cacheable="false"/>
+            <block class="Tigren\AdvancedQuestion\Block\Save" name="tigren_customer_question_create"
+                   template="Tigren_AdvancedQuestion::form.phtml"/>
         </referenceContainer>
     </body>
 

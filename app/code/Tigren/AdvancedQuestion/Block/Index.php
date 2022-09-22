@@ -5,12 +5,13 @@
  * @license   Open Software License ("OSL") v. 3.0
  */
 
-namespace Tigren\AdvancedCustomer\Block;
+namespace Tigren\AdvancedQuestion\Block;
 
 use Magento\Customer\Model\Session;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Tigren\Customer\Model\QuestionFactory;
+use Tigren\Customer\Model\ResourceModel\Question\Collection;
 use Tigren\Customer\Model\ResourceModel\Question\CollectionFactory;
 
 /**
@@ -23,6 +24,7 @@ class Index extends Template
      * @var QuestionFactory
      */
     protected $_questionFactory;
+
     /**
      * @var Session
      */
@@ -37,6 +39,7 @@ class Index extends Template
      * @param Context $context
      * @param QuestionFactory $questionFactory
      * @param Session $customerSession
+     * @param CollectionFactory $collectionFactory
      * @param array $data
      */
     public function __construct(
@@ -53,24 +56,20 @@ class Index extends Template
     }
 
     /**
-     * @return array
+     * @return Collection
      */
-    public function getCollection(): array
+    public function getCollection()
     {
         $collectionByID = [];
         if ($this->_customerSession->isLoggedIn()) {
             $idCustomerLogin = $this->_customerSession->getCustomerId();
 //            echo $idCustomerLogin ? $idCustomerLogin : null;
             if ($idCustomerLogin) {
-                $collection = $this->_collectionFactory->create();
-                foreach ($collection as $key=> $value) {
-                    if ($value->getAuthorId() == $idCustomerLogin) {
-                        $collectionByID[$key] = $value;
-                    }
-                }
+                $collection = $this->_collectionFactory->create()->addFieldToFilter('author_id', ['like' => '%' . $idCustomerLogin . '%']);
             }
+        } else {
+            $collection = $this->_collectionFactory->create();
         }
-
-        return $collectionByID;
+        return $collection;
     }
 }

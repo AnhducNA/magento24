@@ -5,7 +5,7 @@
  * @license   Open Software License ("OSL") v. 3.0
  */
 
-namespace Tigren\AdvancedCustomer\Controller\Question;
+namespace Tigren\AdvancedQuestion\Controller\Question;
 
 use Magento\Framework\App\Action\Action;
 

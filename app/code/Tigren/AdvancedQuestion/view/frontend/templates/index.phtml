@@ -1,0 +1,99 @@
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+
+/**
+ * @var Index $block
+ */
+
+use Tigren\AdvancedQuestion\Block\Index;
+
+?>
+<h1>Form show Customer's question</h1>
+<?php
+//echo $block->getListQuestionByID();
+$collection = $block->getCollection();
+//print_r($collection->getData());
+
+?>
+<table>
+    <tr>
+        <th>Question ID</th>
+        <th>Author ID</th>
+        <th>Title Question</th>
+        <th>Content Question</th>
+        <th>Created At</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <?php
+
+    foreach ($collection as $key => $question) {
+        ?>
+        <tr>
+            <td><?php echo $question['entity_id'] ?></td>
+            <td><?php echo $question['author_id'] ?></td>
+            <td><?php echo $question['title'] ?></td>
+            <td><?php echo $question['content'] ?></td>
+            <td><?php echo $question['created_at'] ?></td>
+            <td>
+                <button id="btnEdit"
+                        data-idQuestion="<?php echo $question['entity_id']; ?>"
+                        onclick="editItem(this)">
+                    Edit
+                </button>
+            </td>
+            <td>
+                <button id="btnDelete"
+                        data-idQuestion="<?php echo $question['entity_id']; ?>"
+                        onclick="deleteItem(this)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        <?php
+    }
+    ?>
+</table>
+<br>
+<div class="actions text-right">
+    <a href="<?php echo $block->getUrl() . 'tigren_advancedquestion/question/create' ?>">
+        <span><?= $block->escapeHtml(__('Create new question')) ?></span>
+    </a>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "#btnDelete": {
+        "question_js": {}
+    }
+}
+
+</script>
+<script type="text/javascript">
+    function editItem(e){
+        let idQuestion = jQuery(e).attr('data-idQuestion');
+        let url = '/tigren_advancedquestion/question/edititem?id=' + idQuestion;
+        window.location.href = url;
+    }
+
+    function deleteItem(e) {
+        let idQuestion = jQuery(e).attr('data-idQuestion');
+        let url = '/tigren_advancedquestion/question/deleteItem/?id=' + idQuestion;
+        require(["jquery", 'mage/storage', 'mage/translate', 'Magento_Checkout/js/model/url-builder'], function ($, storage, $t, urlBuilder) {
+            storage.post(
+                urlBuilder.createUrl(url, {}),
+                JSON.stringify({
+                    id: idQuestion,
+                })
+            ).done(function (response) {
+                location.reload();
+                alert('delete question success');
+            }).fail(function () {
+                alert('error save data');
+            })
+        })
+    }
+</script>

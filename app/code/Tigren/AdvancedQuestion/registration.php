@@ -9,6 +9,6 @@ use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'Tigren_AdvancedCustomer',
+    'Tigren_AdvancedQuestion',
     __DIR__
 );

@@ -5,12 +5,13 @@
  * @license   Open Software License ("OSL") v. 3.0
  */
 
-namespace Tigren\AdvancedCustomer\Controller\Question;
+namespace Tigren\AdvancedQuestion\Controller\Question;
 
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
@@ -48,12 +49,12 @@ class Index extends Action
     public function execute()
     {
 //        die('aaa');
-        if ($this->_sesstion->isLoggedIn()) {
+//        if ($this->_sesstion->isLoggedIn()) {
             return $this->_pageFactory->create();
-        } else {
-            $this->messageManager->addErrorMessage("You have to login to access this page");
-            return $this->_redirect('customer/account/login/');
-        }
-
+//        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+//        } else {
+//            $this->messageManager->addErrorMessage("You have to login to access this page");
+//            return $this->_redirect('customer/account/login/');
+//        }
     }
 }
