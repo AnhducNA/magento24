@@ -74,7 +74,8 @@ class Question implements QuestionInterface
             'title' => $title,
             'content' => $content,
             'created_at' => $date,
-            'author_id'=>$idCustomerLogin];
+            'author_id'=>$idCustomerLogin
+        ];
 
         if ($id != 0) {
             $model = $this->questionFactory->create()->load($id);

@@ -8,38 +8,41 @@ define(["jquery", 'mage/storage', 'mage/translate', 'Magento_Checkout/js/model/u
     "use strict";
     return function () {
         //save data
-        $('#btn_save').on('click', function () {
-            let idQuestion = $('#btn_save').attr('data-idQuestion');
-            if(idQuestion){
-                storage.post(
-                    urlBuilder.createUrl('/tigren_advancedquestion/question/save', {}),
-                    JSON.stringify({
-                        id: idQuestion,
-                        title: $('#title').val(),
-                        content: $('#content').val()
-                    })
-                ).done(function (response) {
-                    // location.reload();
-                    window.location.href = '/tigren_advancedquestion/question/';
-                }).fail(function () {
-                    alert('error save data');
-                })
-            }else{
-                storage.post(
-                    urlBuilder.createUrl('/tigren_advancedquestion/question/save', {}),
-                    JSON.stringify({
-                        id: 0,
-                        title: $('#title').val(),
-                        content: $('#content').val()
-                    })
-                ).done(function (response) {
-                    // location.reload();
-                    window.location.href = '/tigren_advancedquestion/question/';
-                }).fail(function () {
-                    alert('error save data');
-                })
-            }
-
-        });
+        $(document).ready(function (){
+            $("#btn_save").on('click', function () {
+                if ($("#btn_save").attr('isValidate')) {
+                    let idQuestion = $('#btn_save').attr('data-idQuestion');
+                    if(idQuestion){
+                        storage.post(
+                            urlBuilder.createUrl('/tigren_advancedquestion/question/save', {}),
+                            JSON.stringify({
+                                id: idQuestion,
+                                title: $('#title').val(),
+                                content: $('#content').val()
+                            })
+                        ).done(function (response) {
+                            // location.reload();
+                            window.location.href = '/tigren_advancedquestion/question/';
+                        }).fail(function () {
+                            alert('error save data');
+                        })
+                    }else{
+                        storage.post(
+                            urlBuilder.createUrl('/tigren_advancedquestion/question/save', {}),
+                            JSON.stringify({
+                                id: 0,
+                                title: $('#title').val(),
+                                content: $('#content').val()
+                            })
+                        ).done(function (response) {
+                            // location.reload();
+                            window.location.href = '/tigren_advancedquestion/question/';
+                        }).fail(function () {
+                            alert('error save data');
+                        })
+                    }
+                }
+            });
+        })
     }
 });

@@ -63,7 +63,6 @@ class Index extends Template
         $collectionByID = [];
         if ($this->_customerSession->isLoggedIn()) {
             $idCustomerLogin = $this->_customerSession->getCustomerId();
-//            echo $idCustomerLogin ? $idCustomerLogin : null;
             if ($idCustomerLogin) {
                 $collection = $this->_collectionFactory->create()->addFieldToFilter('author_id', ['like' => '%' . $idCustomerLogin . '%']);
             }

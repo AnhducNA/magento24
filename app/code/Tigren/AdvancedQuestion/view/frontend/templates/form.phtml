@@ -23,45 +23,66 @@ use Tigren\AdvancedQuestion\Block\Save;
         <strong><?= $block->escapeHtml(__('Tigren Question Form')) ?></strong>
     </div>
     <div class="content">
-        <div class="control">
-            <div class="form-group">
-                <label
-                    for="title"> <?= $block->escapeHtml(__('Tittle')) ?></label>
-                <input type="text" name="title" class="form-control" id="title"
-                       value="<?php
-                       if (!empty($block->getQuestionUpdate())) {
-                           echo $block->getQuestionUpdate()->getTitle();
-                       }
-                       ?>">
+        <div id="form_save">
+            <div class="control">
+                <div class="form-group">
+                    <label
+                        for="title"> <?= $block->escapeHtml(__('Tittle')) ?></label>
+                    <input type="text" name="title" class="form-control" id="title"
+                           value="<?php
+                           if (!empty($block->getQuestionUpdate())) {
+                               echo $block->getQuestionUpdate()->getTitle();
+                           }
+                           ?>">
+                </div>
+                <div class="form-group">
+                    <label
+                        for="content"> <?= $block->escapeHtml(__('Content')) ?></label>
+                    <input type="text" name="content" class="form-control" id="content"
+                           value="<?php
+                           if (!empty($block->getQuestionUpdate())) {
+                               echo $block->getQuestionUpdate()->getContent();
+                           }
+                           ?>">
+                </div>
             </div>
-            <div class="form-group">
-                <label
-                    for="content"> <?= $block->escapeHtml(__('Content')) ?></label>
-                <input type="text" name="content" class="form-control" id="content"
-                       value="<?php
-                       if (!empty($block->getQuestionUpdate())) {
-                           echo $block->getQuestionUpdate()->getContent();
-                       }
-                       ?>">
-            </div>
+            <br>
+            <div class="actions">
+                <button type="submit" class="btn btn-primary" id="btn_save" onclick="return validateForm(this)"
 
-        </div>
-        <br>
-        <div class="actions">
-            <button type="submit" class="btn btn-primary btnSave" id="btn_save"
-                    title="<?= $block->escapeHtml(__('Save')) ?>"
-                    data-idQuestion="<?php echo $block->returnIdQuestion() ?>">
-                <?= $block->escapeHtml(__('Save')) ?>
-            </button>
+                        title="<?= $block->escapeHtml(__('Save')) ?>"
+                        data-idQuestion="<?php echo $block->returnIdQuestion() ?>">
+                    <?= $block->escapeHtml(__('Save')) ?>
+                </button>
+            </div>
         </div>
 
     </div>
 </div>
+<script type="text/javascript">
+    function validateForm(e) {
+        // debugger;
+        let title = document.getElementById("title").value;
+        let content = document.getElementById("content").value;
+        if (title === "") {
+            alert("Title must be filled out");
+            return false;
+        } else if (content === "") {
+            alert("Content must be filled out");
+            return false;
+        } else {
+            e.setAttribute('isValidate', true);
+            return true;
+        }
+    }
+</script>
 <script type="text/x-magento-init">
 {
     "#btn_save": {
         "question_js": {}
     }
 }
+
+
 
 </script>

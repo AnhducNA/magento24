@@ -48,13 +48,6 @@ class Index extends Action
      */
     public function execute()
     {
-//        die('aaa');
-//        if ($this->_sesstion->isLoggedIn()) {
             return $this->_pageFactory->create();
-//        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-//        } else {
-//            $this->messageManager->addErrorMessage("You have to login to access this page");
-//            return $this->_redirect('customer/account/login/');
-//        }
     }
 }

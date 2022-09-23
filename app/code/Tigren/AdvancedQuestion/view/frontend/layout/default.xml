@@ -8,9 +8,9 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="header.links">
-            <block class="Magento\Framework\View\Element\Html\Link" name="question-header-link">
+            <block class="Magento\Framework\View\Element\Html\Link" name="question-api-header-link">
                 <arguments>
-                    <argument name="label" xsi:type="string" translate="true">Advanced Customer Question</argument>
+                    <argument name="label" xsi:type="string" translate="true">Advanced Question</argument>
                     <argument name="path" xsi:type="string" translate="true">tigren_advancedquestion/question</argument>
                 </arguments>
             </block>
