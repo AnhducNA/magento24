@@ -15,13 +15,32 @@ use Magento\Ui\Component\MassAction\Filter;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\CollectionFactory;
 use Tigren\CustomerGroupCatalog\Model\RuleFactory;
 
+/**
+ * Class MassDelete
+ * @package Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule
+ */
 class MassDelete extends Action
 {
+    /**
+     * @var CollectionFactory
+     */
     protected CollectionFactory $collectionFactory;
 
+    /**
+     * @var Filter
+     */
     protected Filter $filter;
+    /**
+     * @var RuleFactory
+     */
     protected RuleFactory $ruleFactory;
 
+    /**
+     * @param Context $context
+     * @param Filter $filter
+     * @param CollectionFactory $collectionFactory
+     * @param RuleFactory $ruleFactory
+     */
     public function __construct(
         Context           $context,
         Filter            $filter,
@@ -34,6 +53,9 @@ class MassDelete extends Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\Result\Redirect&\Magento\Framework\Controller\ResultInterface|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         try {

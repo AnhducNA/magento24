@@ -64,6 +64,5 @@ class ProcessOrder implements ObserverInterface
             $customer->save();
         }
         return $this;
-
     }
 }

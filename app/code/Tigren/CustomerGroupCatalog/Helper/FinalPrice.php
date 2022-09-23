@@ -19,10 +19,25 @@ use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\CollectionFactory as Ru
  */
 class FinalPrice extends AbstractHelper
 {
+    /**
+     * @var
+     */
     protected $_ruleCollectionFactory;
+    /**
+     * @var ProductCollectionFactory
+     */
     protected $_productCollectionFactory;
+    /**
+     * @var Product
+     */
     protected $_product;
 
+    /**
+     * @param Context $context
+     * @param ProductCollectionFactory $productCollectionFactory
+     * @param Product $product
+     * @param RuleCollectionFactory $ruleCollectionFactory
+     */
     public function __construct(
         Context                  $context,
         ProductCollectionFactory $productCollectionFactory,

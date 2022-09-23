@@ -11,7 +11,6 @@
     <event name="checkout_submit_all_after">
         <observer name="tigren_advancedcheckout_checkout_submit_all_after"
                   instance="Tigren\AdvancedCheckout\Observer\ProcessOrder"/>
-
     </event>
 
 </config>

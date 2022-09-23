@@ -15,7 +15,6 @@ use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
  */
 class Customdropdown extends AbstractSource
 {
-
     /**
      * @return array|array[]|null
      */
@@ -28,7 +27,6 @@ class Customdropdown extends AbstractSource
                 ['label' => __('Option 2'), 'value' => 2],
             ];
         }
-
         return $this->_options;
     }
 }

@@ -16,7 +16,6 @@ use Magento\Framework\View\Result\PageFactory;
 
 /**
  * Class AddNew
- *
  * @package Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule
  */
 class AddNew extends Action

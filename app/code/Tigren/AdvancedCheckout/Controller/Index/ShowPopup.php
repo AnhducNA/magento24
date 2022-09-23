@@ -110,7 +110,6 @@ class ShowPopup extends Action
                 $isExist = true;
             }
         }
-
         return $isExist;
     }
 }
