@@ -12,7 +12,6 @@ use Magento\Store\Model\System\Store;
 
 /**
  * Class StoresOptionsProvider
- *
  * @package Tigren\CustomerGroupCatalog\Model\Rule
  */
 class StoresOptionsProvider implements OptionSourceInterface

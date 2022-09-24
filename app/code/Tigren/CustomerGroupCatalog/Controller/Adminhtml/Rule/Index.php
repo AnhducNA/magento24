@@ -16,7 +16,6 @@ use Magento\Framework\View\Result\PageFactory;
 
 /**
  * Class Index
- *
  * @package Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule
  */
 class Index extends Action

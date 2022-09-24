@@ -12,8 +12,7 @@
              module="Tigren_CustomerGroupCatalog"
              sortOrder="20" resource="Tigren_CustomerGroupCatalog::view"/>
         <add id="Tigren_CustomerGroupCatalog::posts_menu" title="GroupCatalog Rule"
-             module="Tigren_CustomerGroupCatalog"
-             sortOrder="1"
+             module="Tigren_CustomerGroupCatalog" sortOrder="1"
              parent="Tigren_CustomerGroupCatalog::groupCatalog_menu" action="tigren_customergroupcatalog/rule"
              resource="Tigren_CustomerGroupCatalog::menu1"/>
     </menu>

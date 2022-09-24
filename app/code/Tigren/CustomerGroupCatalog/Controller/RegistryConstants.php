@@ -7,6 +7,10 @@
 
 namespace Tigren\CustomerGroupCatalog\Controller;
 
+/**
+ * Class RegistryConstants
+ * @package Tigren\CustomerGroupCatalog\Controller
+ */
 class RegistryConstants
 {
     /**

@@ -7,20 +7,32 @@
 
 namespace Tigren\CustomerGroupCatalog\Block\Adminhtml\Rule\Edit;
 
-use Tigren\CustomerGroupCatalog\Controller\RegistryConstants;
+use Magento\Backend\Block\Widget\Context;
 use Magento\CatalogRule\Block\Adminhtml\Edit\GenericButton as CatalogRuleGenericButton;
+use Magento\Framework\AuthorizationInterface;
+use Magento\Framework\Registry;
+use Tigren\CustomerGroupCatalog\Controller\RegistryConstants;
 
+/**
+ * Class GenericButton
+ * @package Tigren\CustomerGroupCatalog\Block\Adminhtml\Rule\Edit
+ */
 class GenericButton extends CatalogRuleGenericButton
 {
     /**
-     * @var \Magento\Framework\AuthorizationInterface
+     * @var AuthorizationInterface
      */
     protected $authorization;
 
+    /**
+     * @param Context $context
+     * @param Registry $registry
+     * @param AuthorizationInterface $authorization
+     */
     public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\AuthorizationInterface $authorization
+        Context $context,
+        Registry           $registry,
+        AuthorizationInterface                $authorization
     ) {
         $this->authorization = $context->getAuthorization() ?: $authorization;
         parent::__construct($context, $registry);
@@ -35,7 +47,6 @@ class GenericButton extends CatalogRuleGenericButton
     {
         $groupcatRule
             = $this->registry->registry(RegistryConstants::CURRENT_GROUPCATALOG_RULE_ID);
-
         return $groupcatRule ? $groupcatRule->getId() : null;
     }
 }

@@ -27,7 +27,7 @@ class DataProvider extends AbstractDataProvider
     /**
      * @var array
      */
-    protected $loadedData ;
+    protected $loadedData;
 
     /**
      * @var DataPersistorInterface

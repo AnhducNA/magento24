@@ -17,7 +17,7 @@ use Magento\Framework\Model\ResourceModel\Db\Context;
 class Rule extends AbstractDb
 {
     /**
-     * @param  Context  $context
+     * @param Context $context
      */
     public function __construct(Context $context)
     {

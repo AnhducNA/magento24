@@ -9,6 +9,10 @@ namespace Tigren\CustomerGroupCatalog\Block\Adminhtml\Rule\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
+/**
+ * Class SaveButton
+ * @package Tigren\CustomerGroupCatalog\Block\Adminhtml\Rule\Edit
+ */
 class SaveButton extends GenericButton implements ButtonProviderInterface
 {
     /**
@@ -22,7 +26,6 @@ class SaveButton extends GenericButton implements ButtonProviderInterface
             'class'    => 'save primary',
             'on_click' => '',
         ];
-
         return $data;
     }
 }

@@ -12,8 +12,20 @@ use Magento\Framework\Api\Filter;
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\CollectionFactory;
 
+/**
+ * Class Listing
+ * @package Tigren\CustomerGroupCatalog\Ui\DataProvider\Rule
+ */
 class Listing extends AbstractDataProvider
 {
+    /**
+     * @param CollectionFactory $collectionFactory
+     * @param $name
+     * @param $primaryFieldName
+     * @param $requestFieldName
+     * @param array $meta
+     * @param array $data
+     */
     public function __construct(
         CollectionFactory $collectionFactory,
         $name,
@@ -32,6 +44,10 @@ class Listing extends AbstractDataProvider
         $this->collection = $collectionFactory->create();
     }
 
+    /**
+     * @param Filter $filter
+     * @return void
+     */
     public function addFilter(Filter $filter)
     {
         if ($filter->getField() == 'rule_id') {

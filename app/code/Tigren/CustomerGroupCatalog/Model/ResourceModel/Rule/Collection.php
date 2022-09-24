@@ -14,8 +14,7 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
  *
  * @package Tigren\HelloWorld\Model\ResourceModel\Topic
  */
-class Collection extends
-    AbstractCollection
+class Collection extends AbstractCollection
 {
     /**
      * @return void

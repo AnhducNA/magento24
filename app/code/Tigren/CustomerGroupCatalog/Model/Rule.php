@@ -17,6 +17,7 @@ use Magento\Framework\Model\AbstractModel;
 class Rule extends AbstractModel implements IdentityInterface
 {
     const CACHE_TAG = 'tigren_customer_groupcatalog_rule';
+
     /**
      * @var string
      */

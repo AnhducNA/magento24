@@ -19,9 +19,20 @@ use Magento\Framework\App\Http\Context as AuthContext;
  */
 class Hidecartbutton
 {
+    /**
+     * @var Session
+     */
     protected $customerSession;
+
+    /**
+     * @var AuthContext
+     */
     protected $authContext;
 
+    /**
+     * @param Session $session
+     * @param AuthContext $authContext
+     */
     public function __construct(Session $session, AuthContext $authContext)
     {
         $this->customerSession = $session;

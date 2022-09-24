@@ -13,9 +13,9 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
 use Tigren\CustomerGroupCatalog\Model\RuleFactory;
 
+
 /**
  * Class Save
- *
  * @package Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule
  */
 class Save extends Action
