@@ -12,7 +12,6 @@
             Question Form
         </title>
     </head>
-
     <body>
         <referenceContainer name="content">
             <uiComponent name="tigren_customer_question_form"/>

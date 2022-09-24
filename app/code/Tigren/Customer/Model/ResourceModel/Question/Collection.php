@@ -7,9 +7,16 @@
 
 namespace Tigren\Customer\Model\ResourceModel\Question;
 
+/**
+ * Class Collection
+ * @package Tigren\Customer\Model\ResourceModel\Question
+ */
 class Collection extends
     \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
+    /**
+     * @return void
+     */
     protected function _construct()
     {
         $this->_init(

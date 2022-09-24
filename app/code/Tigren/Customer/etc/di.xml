@@ -21,5 +21,4 @@
             <argument name="resourceModel" xsi:type="string">Tigren\Customer\Model\ResourceModel\Question</argument>
         </arguments>
     </virtualType>
-
 </config>

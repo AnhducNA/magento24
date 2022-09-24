@@ -9,6 +9,10 @@ namespace Tigren\Customer\Block\Adminhtml\Question\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
+/**
+ * Class SaveButton
+ * @package Tigren\Customer\Block\Adminhtml\Question\Edit
+ */
 class SaveButton extends GenericButton implements ButtonProviderInterface
 {
     /**

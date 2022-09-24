@@ -14,10 +14,7 @@ use Tigren\Customer\Block\Index;
 ?>
 <h1>Form show Customer's question</h1>
 <?php
-//echo $block->getListQuestionByID();
 $collection = $block->getCollection();
-//print_r($collection->getData());
-
 ?>
 <table>
     <tr>
@@ -29,7 +26,6 @@ $collection = $block->getCollection();
         <th colspan="2">Action</th>
     </tr>
     <?php
-
     foreach ($collection as $key => $question) {
         ?>
         <tr>

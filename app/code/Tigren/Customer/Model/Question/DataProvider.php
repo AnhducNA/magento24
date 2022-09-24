@@ -13,6 +13,10 @@ use Tigren\Customer\Model\Question;
 use Tigren\Customer\Model\ResourceModel\Question\Collection;
 use Tigren\Customer\Model\ResourceModel\Question\CollectionFactory;
 
+/**
+ * Class DataProvider
+ * @package Tigren\Customer\Model\Question
+ */
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
     /**
@@ -67,7 +71,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $question->load($question->getId());
             $this->loadedData[$question->getId()] = $question->getData();
         }
-
         $data = $this->dataPersistor->get('tigren_customer_question');
         if (!empty($data)) {
             $question = $this->collection->getNewEmptyItem();
@@ -75,7 +78,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->loadedData[$question->getId()] = $question->getData();
             $this->dataPersistor->clear('tigren_customer_question');
         }
-
         return $this->loadedData;
     }
 }

@@ -46,7 +46,7 @@ class Save extends Action
     }
 
     /**
-     * @return Redirect|ResultInterface|void
+     * @return Redirect
      */
     public function execute()
     {
@@ -54,23 +54,19 @@ class Save extends Action
         if ($data = $this->getRequest()->getPostValue()) {
             $newData = $data;
             $newData['created_at'] = $date;
-
             try {
                 if (isset($newData['entity_id'])) {
-
                     $model = $this->questionFactory->create()->load($newData['entity_id']);
                     $model->setTitle($newData['title']);
                     $model->setContent($newData['content']);
                     $model->save();
                 } else {
-
                     $model = $this->questionFactory->create();
                     $model->setTitle($newData['title']);
                     $model->setContent($newData['content']);
                     $model->setCreatedAt($newData['created_at']);
                     $model->save();
                 }
-
                 $this->messageManager->addSuccess('Save question successfully.');
             } catch (Exception $e) {
                 $this->messageManager->addErrorMessage(
@@ -78,7 +74,6 @@ class Save extends Action
                 );
             }
         }
-
         return $this->resultRedirectFactory->create()
             ->setPath('tigren_customer/question/index');
     }

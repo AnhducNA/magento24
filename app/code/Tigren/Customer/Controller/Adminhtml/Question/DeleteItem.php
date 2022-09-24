@@ -4,15 +4,32 @@ namespace Tigren\Customer\Controller\Adminhtml\Question;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\View\Result\PageFactory;
 use PHPUnit\Exception;
 use Tigren\Customer\Model\QuestionFactory;
 
+/**
+ * Class DeleteItem
+ * @package Tigren\Customer\Controller\Adminhtml\Question
+ */
 class DeleteItem extends Action
 {
+    /**
+     * @var PageFactory
+     */
     protected $_pageFactory;
+
+    /**
+     * @var QuestionFactory
+     */
     protected $_questionFactory;
 
+    /**
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     * @param QuestionFactory $questionFactory
+     */
     public function __construct(
         Context         $context,
         PageFactory     $pageFactory,
@@ -24,6 +41,10 @@ class DeleteItem extends Action
         return parent::__construct($context);
     }
 
+    /**
+     * @return Redirect
+     * @throws \Exception
+     */
     public function execute()
     {
         try {

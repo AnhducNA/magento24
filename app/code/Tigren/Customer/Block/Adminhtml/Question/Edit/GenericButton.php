@@ -7,20 +7,32 @@
 
 namespace Tigren\Customer\Block\Adminhtml\Question\Edit;
 
-use Tigren\Customer\Controller\RegistryConstants;
+use Magento\Backend\Block\Widget\Context;
 use Magento\CatalogRule\Block\Adminhtml\Edit\GenericButton as CustomerQuestionGenericButton;
+use Magento\Framework\AuthorizationInterface;
+use Magento\Framework\Registry;
+use Tigren\Customer\Controller\RegistryConstants;
 
+/**
+ * Class GenericButton
+ * @package Tigren\Customer\Block\Adminhtml\Question\Edit
+ */
 class GenericButton extends CustomerQuestionGenericButton
 {
     /**
-     * @var \Magento\Framework\AuthorizationInterface
+     * @var AuthorizationInterface
      */
     protected $authorization;
 
+    /**
+     * @param Context $context
+     * @param Registry $registry
+     * @param AuthorizationInterface $authorization
+     */
     public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\AuthorizationInterface $authorization
+        Context     $context,
+        Registry               $registry,
+        AuthorizationInterface $authorization
     ) {
         $this->authorization = $context->getAuthorization() ?: $authorization;
         parent::__construct($context, $registry);

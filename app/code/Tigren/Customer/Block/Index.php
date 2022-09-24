@@ -23,6 +23,7 @@ class Index extends Template
      * @var QuestionFactory
      */
     protected $_questionFactory;
+
     /**
      * @var Session
      */

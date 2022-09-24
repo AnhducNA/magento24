@@ -36,7 +36,7 @@ class AddNew extends Action
     }
 
     /**
-     * @return ResponseInterface|ResultInterface|Page
+     * @return Page|ResultInterface
      */
     public function execute()
     {

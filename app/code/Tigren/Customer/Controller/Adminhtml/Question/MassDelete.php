@@ -10,18 +10,41 @@ namespace Tigren\Customer\Controller\Adminhtml\Question;
 use Exception;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Ui\Component\MassAction\Filter;
 use Tigren\Customer\Model\QuestionFactory;
 use Tigren\Customer\Model\ResourceModel\Question\CollectionFactory;
 
+/**
+ * Class MassDelete
+ * @package Tigren\Customer\Controller\Adminhtml\Question
+ */
 class MassDelete extends Action
 {
+    /**
+     * @var CollectionFactory
+     */
     protected CollectionFactory $collectionFactory;
 
+    /**
+     * @var Filter
+     */
     protected Filter $filter;
+
+    /**
+     * @var QuestionFactory
+     */
     protected QuestionFactory $questionFactory;
 
+    /**
+     * @param Context $context
+     * @param Filter $filter
+     * @param CollectionFactory $collectionFactory
+     * @param QuestionFactory $questionFactory
+     */
     public function __construct(
         Context           $context,
         Filter            $filter,
@@ -34,6 +57,9 @@ class MassDelete extends Action
         parent::__construct($context);
     }
 
+    /**
+     * @return ResponseInterface|Redirect&ResultInterface
+     */
     public function execute()
     {
         try {
@@ -50,5 +76,4 @@ class MassDelete extends Action
         }
         return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('tigren_customer/question/index');
     }
-
 }

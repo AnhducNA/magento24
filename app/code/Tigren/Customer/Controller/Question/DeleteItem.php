@@ -9,15 +9,32 @@ namespace Tigren\Customer\Controller\Question;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\View\Result\PageFactory;
 use PHPUnit\Exception;
 use Tigren\Customer\Model\QuestionFactory;
 
+/**
+ * Class DeleteItem
+ * @package Tigren\Customer\Controller\Question
+ */
 class DeleteItem extends Action
 {
+    /**
+     * @var PageFactory
+     */
     protected $_pageFactory;
+
+    /**
+     * @var QuestionFactory
+     */
     protected $_questionFactory;
 
+    /**
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     * @param QuestionFactory $questionFactory
+     */
     public function __construct(
         Context         $context,
         PageFactory     $pageFactory,
@@ -25,10 +42,13 @@ class DeleteItem extends Action
     ) {
         $this->_pageFactory = $pageFactory;
         $this->_questionFactory = $questionFactory;
-
         return parent::__construct($context);
     }
 
+    /**
+     * @return Redirect
+     * @throws \Exception
+     */
     public function execute()
     {
         try {
@@ -45,7 +65,6 @@ class DeleteItem extends Action
                 __("We can't delete record, Please try again.")
             );
         }
-
         return $this->resultRedirectFactory->create()
             ->setPath('tigren_customer/question/');
     }

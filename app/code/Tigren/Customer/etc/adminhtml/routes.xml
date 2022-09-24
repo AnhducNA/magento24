@@ -11,6 +11,5 @@
         <route id="tigren_customer" frontName="tigren_customer">
             <module name="Tigren_Customer"/>
         </route>
-
     </router>
 </config>

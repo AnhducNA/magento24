@@ -15,12 +15,17 @@ use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
+/**
+ * Class Index
+ * @package Tigren\Customer\Controller\Question
+ */
 class Index extends Action
 {
     /**
      * @var PageFactory
      */
     protected $_pageFactory;
+
     /**
      * @var Session
      */
@@ -38,7 +43,6 @@ class Index extends Action
     ) {
         $this->_sesstion = $session;
         $this->_pageFactory = $pageFactory;
-
         return parent::__construct($context);
     }
 

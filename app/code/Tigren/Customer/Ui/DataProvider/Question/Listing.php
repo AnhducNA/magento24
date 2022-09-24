@@ -8,11 +8,24 @@ declare(strict_types=1);
 
 namespace Tigren\Customer\Ui\DataProvider\Question;
 
+use Magento\Framework\Api\Filter;
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use Tigren\Customer\Model\ResourceModel\Question\CollectionFactory;
 
+/**
+ * Class Listing
+ * @package Tigren\Customer\Ui\DataProvider\Question
+ */
 class Listing extends AbstractDataProvider
 {
+    /**
+     * @param CollectionFactory $collectionFactory
+     * @param $name
+     * @param $primaryFieldName
+     * @param $requestFieldName
+     * @param array $meta
+     * @param array $data
+     */
     public function __construct(
         CollectionFactory $collectionFactory,
         $name,
@@ -25,7 +38,11 @@ class Listing extends AbstractDataProvider
         $this->collection = $collectionFactory->create();
     }
 
-    public function addFilter(\Magento\Framework\Api\Filter $filter)
+    /**
+     * @param Filter $filter
+     * @return void
+     */
+    public function addFilter(Filter $filter)
     {
         if ($filter->getField() == 'entity_id') {
             $filter->setField('main_table.' . $filter->getField());
