@@ -11,6 +11,5 @@
         <route id="tigren_advancedquestion" frontName="tigren_advancedquestion">
             <module name="Tigren_AdvancedQuestion"/>
         </route>
-
     </router>
 </config>

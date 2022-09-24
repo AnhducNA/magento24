@@ -11,11 +11,14 @@ use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
+/**
+ * Class Index
+ * @package Tigren\AdvancedQuestion\Controller\Question
+ */
 class Index extends Action
 {
     /**
@@ -48,6 +51,6 @@ class Index extends Action
      */
     public function execute()
     {
-            return $this->_pageFactory->create();
+        return $this->_pageFactory->create();
     }
 }
